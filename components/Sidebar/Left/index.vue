@@ -66,7 +66,7 @@
       </SidebarLeftTab>
 
       <div class="hidden xl:block">
-        <UIButton liquid size="lg" @on-click="emits('onTweet')">
+        <UIButton liquid size="lg">
           <span class="font-bold"> Tweet </span>
         </UIButton>
       </div>
