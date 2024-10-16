@@ -10,4 +10,6 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+const { defaultTransition } = useTailwindConfig();
+</script>
