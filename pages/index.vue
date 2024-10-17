@@ -11,5 +11,4 @@
 </template>
 <script setup>
 const { twitterBorderColor } = useTailwindConfig();
-c;
 </script>
