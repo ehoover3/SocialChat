@@ -67,7 +67,7 @@
 
       <div class="hidden xl:block">
         <UIButton liquid size="lg">
-          <span class="font-bold"> Tweet </span>
+          <span class="font-bold"> Post Message </span>
         </UIButton>
       </div>
 

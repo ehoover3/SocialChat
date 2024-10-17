@@ -75,7 +75,7 @@
 
       <div class="ml-auto">
         <UIButton size="sm" :disabled="isDisabled" @onClick="handleFormSubmit">
-          <span class="font-bold"> Tweet </span>
+          <div class="font-bold whitespace-nowrap">Post Message</div>
         </UIButton>
       </div>
     </div>

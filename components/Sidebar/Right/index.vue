@@ -80,32 +80,32 @@ function handleSearch() {
 const whatsHappeningItems = ref([
   {
     title: "SpaceX",
-    count: "18.8k Tweets",
+    count: "18.8k Followers",
   },
   {
     title: "#CodingIsFun",
-    count: "8.8k Tweets",
+    count: "8.8k Followers",
   },
   {
     title: "#artforall",
-    count: "1.8k Tweets",
+    count: "1.8k Followers",
   },
 ]);
 
 const whoToFollowItems = ref([
   {
-    name: "Joe Biden",
-    handle: "@JoeBiden",
+    name: "Theodore Roosevelt",
+    handle: "@TheodoreRoosevelt",
     image: "https://picsum.photos/200/200",
   },
   {
-    name: "Joe Biden",
-    handle: "@JoeBiden",
+    name: "George Washington",
+    handle: "@GeorgeWashington",
     image: "https://picsum.photos/200/200",
   },
   {
-    name: "Joe Biden",
-    handle: "@JoeBiden",
+    name: "Abraham Lincoln",
+    handle: "@AbrahamLincoln",
     image: "https://picsum.photos/200/200",
   },
 ]);
