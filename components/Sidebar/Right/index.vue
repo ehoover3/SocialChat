@@ -45,7 +45,7 @@
     <footer>
       <ul class="mx-2 my-4 text-xs text-gray-500">
         <li class="inline-block mx-2">
-          <a href="#" class="hover:underline" @click.prevent="handleToggleDarkMode">Dark mode</a>
+          <a href="#" class="hover:underline" @click.prevent="handleToggleDarkMode">{{ darkModeText }}</a>
         </li>
         <li class="inline-block mx-2">
           <a href="/privacypolicy" class="hover:underline">Privacy Policy</a>
@@ -66,6 +66,7 @@
 import { SearchIcon } from "@heroicons/vue/outline";
 const search = ref("");
 const emitter = useEmitter();
+const isDarkMode = ref(false);
 
 function handleSearch() {
   useRouter().push({
@@ -110,6 +111,11 @@ const whoToFollowItems = ref([
 ]);
 
 function handleToggleDarkMode() {
+  isDarkMode.value = !isDarkMode.value;
   emitter.$emit("toggleDarkMode");
 }
+
+const darkModeText = computed(() => {
+  return isDarkMode.value ? "Dark mode" : "Light mode";
+});
 </script>
