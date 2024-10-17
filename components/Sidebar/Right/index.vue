@@ -51,18 +51,12 @@
           <a href="/privacypolicy" class="hover:underline">Privacy Policy</a>
         </li>
         <li class="inline-block mx-2">
-          <a href="#" class="hover:underline">Cookie Policy</a>
+          <a href="/cookiepolicy" class="hover:underline">Cookie Policy</a>
         </li>
         <li class="inline-block mx-2">
-          <a href="#" class="hover:underline">Accessability</a>
+          <a href="/accessibilitypolicy" class="hover:underline">Accessibility</a>
         </li>
-        <li class="inline-block mx-2">
-          <a href="#" class="hover:underline">Ads info</a>
-        </li>
-        <li class="inline-block mx-2">
-          <a href="#" class="hover:underline">More</a>
-        </li>
-        <li class="inline-block mx-2">© 2022 Twitter, Inc.</li>
+        <li class="inline-block mx-2">© 2024 Social Media App</li>
       </ul>
     </footer>
   </div>
