@@ -3,7 +3,7 @@
     <div class="p-2 my-2 rounded-full hover:bg-blue-50 w-min dark:hover:bg-white/20" :class="defaultTransition">
       <nuxt-link to="/">
         <div class="w-8 h-8">
-          <LogoTwitter />
+          <LogoSocialMedia />
         </div>
       </nuxt-link>
     </div>
