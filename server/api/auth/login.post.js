@@ -6,7 +6,7 @@ import { createRefreshToken } from "../../db/refreshTokens.js";
 import { sendError } from "h3";
 
 export default defineEventHandler(async (event) => {
-  const body = await useBody(event);
+  const body = await readBody(event);
 
   const { username, password } = body;
 
