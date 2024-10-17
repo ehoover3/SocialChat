@@ -1,9 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  app: { head: { link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico?v2" }] } },
+
   buildModules: ["@nuxtjs/tailwindcss"],
   modules: ["@nuxtjs/tailwindcss"],
   serverMiddleware: [],
-
   build: {
     transpile: ["@heroicons/vue"],
   },

@@ -2,7 +2,11 @@
   <div>
     <MainSection title="Home" :loading="loading">
       <Head>
-        <Title>Home / Twitter</Title>
+        <Title>Social Media</Title>
+
+        <link rel="icon" type="image/png" href="/favicon.png" />
+
+        <!-- <link rel="icon" href="/favicon.svg" type="image/svg+xml" /> -->
       </Head>
 
       <div class="border-b" :class="twitterBorderColor">
