@@ -1,6 +1,6 @@
 import UrlPattern from "url-pattern";
 import { decodeAccessToken } from "../utils/jwt.js";
-import { sendError } from "h3";
+import { sendError, eventHandler } from "h3";
 import { getUserById } from "../db/users";
 
 export default defineEventHandler(async (event) => {
