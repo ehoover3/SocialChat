@@ -16,7 +16,7 @@ export default defineEventHandler(async (event) => {
     return;
   }
 
-  const token = event.req.headers["authorization"]?.split(" ")[1];
+  const token = event.req.headers["authorization"]?.split(" ")[1] || null;
 
   const decoded = decodeAccessToken(token);
 
