@@ -1,8 +1,9 @@
 import { getTweets } from "~~/server/db/tweets";
 import { tweetTransformer } from "~~/server/transformers/tweet";
+import { getQuery } from "h3";
 
 export default defineEventHandler(async (event) => {
-  const { query } = useQuery(event);
+  const { query } = getQuery(event);
 
   let primsaQuery = {
     include: {
