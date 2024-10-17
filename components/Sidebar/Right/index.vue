@@ -48,7 +48,7 @@
           <a href="#" class="hover:underline" @click.prevent="handleToggleDarkMode">Dark mode</a>
         </li>
         <li class="inline-block mx-2">
-          <a href="#" class="hover:underline">Privacy Policy</a>
+          <a href="/privacypolicy" class="hover:underline">Privacy Policy</a>
         </li>
         <li class="inline-block mx-2">
           <a href="#" class="hover:underline">Cookie Policy</a>
