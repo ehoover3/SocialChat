@@ -1,6 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  buildModules: ["@nuxtjs/tailwindcss"],
   modules: ["@nuxtjs/tailwindcss"],
+  serverMiddleware: [],
 
   build: {
     transpile: ["@heroicons/vue"],
@@ -15,4 +17,6 @@ export default defineNuxtConfig({
     cloudinaryApiKey: process.env.CLOUDINARY_API_KEY,
     cloudinaryApiSecret: process.env.CLOUDINARY_API_SECRET,
   },
+
+  compatibilityDate: "2024-10-16",
 });
