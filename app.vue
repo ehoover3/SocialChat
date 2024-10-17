@@ -4,7 +4,7 @@
       <LoadingPage v-if="isAuthLoading" />
 
       <!-- App -->
-      <div v-else-if="user" clas="min-h-full">
+      <div v-else-if="user" class="min-h-full">
         <div class="grid grid-cols-12 mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:gap-5">
           <!-- Left sidebar -->
           <div class="hidden md:block xs-col-span-1 xl:col-span-2">
