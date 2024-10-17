@@ -7,7 +7,7 @@
           <SearchIcon @click="handleSearch" />
         </div>
       </div>
-      <input v-model="search" class="flex items-center w-full pl-12 text-sm font-normal text-black bg-gray-200 border border-gray-200 rounded-full shadow dark:text-gray-100 dark:bg-dim-400 dark:border-dim-400 focus:bg-gray-100 dark:focus:bg-dim-900 focus:outline-none focus:border focus:border-blue-200 h-9" placeholder="Search tweet" type="text" />
+      <input @keydown.enter="handleSearch" v-model="search" class="flex items-center w-full pl-12 text-sm font-normal text-black bg-gray-200 border border-gray-200 rounded-full shadow dark:text-gray-100 dark:bg-dim-400 dark:border-dim-400 focus:bg-gray-100 dark:focus:bg-dim-900 focus:outline-none focus:border focus:border-blue-200 h-9" placeholder="Search tweet" type="text" />
     </div>
 
     <!-- Preview Card : What's happening -->
@@ -67,6 +67,7 @@
     </footer>
   </div>
 </template>
+
 <script setup>
 import { SearchIcon } from "@heroicons/vue/outline";
 const search = ref("");
