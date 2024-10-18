@@ -5,16 +5,14 @@
         <LogoSocialMedia />
       </div>
     </div>
-
     <div class="pt-5 space-y-6">
       <UIInput v-model="data.username" label="Username" placeholder="Enter your username" />
-
       <UIInput label="Password" placeholder="Enter your password" type="password" v-model="data.password" />
-
       <UIButton @click="handleLogin" liquid :disabled="isButtonDisabled"> Login </UIButton>
     </div>
   </div>
 </template>
+
 <script setup>
 const data = reactive({
   username: "",
