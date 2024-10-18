@@ -9,15 +9,11 @@
     </div>
 
     <div class="mt-2 space-y-3">
-      <SidebarLeftTab active>
+      <SidebarLeftTab to="/" active>
         <template v-slot:icon>
-          <nuxt-link to="/">
-            <HomeIcon />
-          </nuxt-link>
+          <HomeIcon />
         </template>
-        <template v-slot:name>
-          <nuxt-link to="/"> Home </nuxt-link>
-        </template>
+        <template v-slot:name> Home </template>
       </SidebarLeftTab>
 
       <!-- <SidebarLeftTab>
