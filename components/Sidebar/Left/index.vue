@@ -11,45 +11,49 @@
     <div class="mt-2 space-y-3">
       <SidebarLeftTab active>
         <template v-slot:icon>
-          <HomeIcon />
+          <nuxt-link to="/">
+            <HomeIcon />
+          </nuxt-link>
         </template>
-        <template v-slot:name> Home </template>
+        <template v-slot:name>
+          <nuxt-link to="/"> Home </nuxt-link>
+        </template>
       </SidebarLeftTab>
 
-      <SidebarLeftTab>
+      <!-- <SidebarLeftTab>
         <template v-slot:icon>
           <HashtagIcon />
         </template>
         <template v-slot:name> Explore </template>
-      </SidebarLeftTab>
+      </SidebarLeftTab> -->
 
-      <SidebarLeftTab>
+      <!-- <SidebarLeftTab>
         <template v-slot:icon>
           <BellIcon />
         </template>
         <template v-slot:name> Notifications </template>
-      </SidebarLeftTab>
+      </SidebarLeftTab> -->
 
-      <SidebarLeftTab>
+      <!-- <SidebarLeftTab>
         <template v-slot:icon>
           <InboxIcon />
         </template>
         <template v-slot:name> Messages </template>
-      </SidebarLeftTab>
+      </SidebarLeftTab> -->
 
-      <SidebarLeftTab>
+      <!-- <SidebarLeftTab>
         <template v-slot:icon>
           <BookmarkIcon />
         </template>
         <template v-slot:name> Bookmarks </template>
-      </SidebarLeftTab>
+      </SidebarLeftTab> -->
 
-      <SidebarLeftTab>
+      <!-- <SidebarLeftTab>
         <template v-slot:icon>
           <DocumentTextIcon />
         </template>
         <template v-slot:name> Lists </template>
-      </SidebarLeftTab>
+      </SidebarLeftTab> -->
 
       <SidebarLeftTab>
         <template v-slot:icon>
@@ -58,12 +62,12 @@
         <template v-slot:name> Profile </template>
       </SidebarLeftTab>
 
-      <SidebarLeftTab>
+      <!-- <SidebarLeftTab>
         <template v-slot:icon>
           <DotsCircleHorizontalIcon />
         </template>
         <template v-slot:name> More </template>
-      </SidebarLeftTab>
+      </SidebarLeftTab> -->
 
       <div class="hidden xl:block">
         <UIButton liquid size="lg">

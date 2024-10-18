@@ -15,7 +15,6 @@
       <SidebarRightPreviewCardItem v-for="whatsHappening in whatsHappeningItems">
         <div>
           <h2 class="font-bold text-gray-800 text-md dark:text-white">{{ whatsHappening.title }}</h2>
-
           <p class="text-xs text-gray-400">
             {{ whatsHappening.count }}
           </p>

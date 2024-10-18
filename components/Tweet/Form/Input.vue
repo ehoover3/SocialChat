@@ -4,17 +4,14 @@
       <div class="flex w-12 items-top">
         <img :src="props.user?.profileImage" alt="" class="inline-block w-10 h-10 rounded-full" />
       </div>
-
       <div class="w-full p-2">
         <textarea v-model="text" class="w-full h-10 text-lg text-gray-900 dark:text-gray-100 placeholder:text-gray-400 bg-transparent border-0 dark:text.white focus:ring-0" :placeholder="props.placeholder"></textarea>
       </div>
     </div>
 
     <!-- File Selector -->
-
     <div class="p-4 pl-16">
       <img :src="inputImageUrl" v-if="inputImageUrl" alt="" class="border rounded-2xl" :class="twitterBorderColor" />
-
       <input type="file" ref="imageInput" hidden accept="image/png, image/gif, image/jpeg" @change="handleImageChange" />
     </div>
 
