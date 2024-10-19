@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center justify-around w-full">
+  <div class="flex items-center justify-start w-full">
     <TweetItemActionsIcon color="blue" @on-click="emits('onCommentClick')" :size="size">
       <template v-slot:icon="{ classes }">
         <ChatIcon :class="classes" />
@@ -7,36 +7,6 @@
 
       <template v-if="showStats" v-slot:default>
         {{ props.tweet.repliesCount }}
-      </template>
-    </TweetItemActionsIcon>
-
-    <TweetItemActionsIcon color="green" :size="size">
-      <template v-slot:icon="{ classes }">
-        <RefreshIcon :class="classes" />
-      </template>
-
-      <template v-if="showStats" v-slot:default>
-        {{ generateRandomNumber() }}
-      </template>
-    </TweetItemActionsIcon>
-
-    <TweetItemActionsIcon color="red" :size="size">
-      <template v-slot:icon="{ classes }">
-        <HeartIcon :class="classes" />
-      </template>
-
-      <template v-if="showStats" v-slot:default>
-        {{ generateRandomNumber() }}
-      </template>
-    </TweetItemActionsIcon>
-
-    <TweetItemActionsIcon color="blue" :size="size">
-      <template v-slot:icon="{ classes }">
-        <UploadIcon :class="classes" />
-      </template>
-
-      <template v-if="showStats" v-slot:default>
-        {{ generateRandomNumber() }}
       </template>
     </TweetItemActionsIcon>
   </div>
