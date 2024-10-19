@@ -1,6 +1,6 @@
 <template>
   <div>
-    <MainSection title="Tweet" :loading="loading">
+    <MainSection title="Posted Message" :loading="loading">
       <Head>
         <Title></Title>
       </Head>
