@@ -82,13 +82,20 @@ export default () => {
     return new Promise(async (resolve, reject) => {
       try {
         const data = await useFetchApi("/api/auth/user");
-
         setUser(data.user);
         resolve(true);
       } catch (error) {
         reject(error);
       }
     });
+  };
+
+  const updateUser = async (userData) => {
+    const response = await useFetch("/api/auth/user", {
+      method: "PUT",
+      body: JSON.stringify(userData),
+    });
+    return response;
   };
 
   const reRefreshAccessToken = () => {
@@ -146,6 +153,8 @@ export default () => {
   return {
     signup,
     login,
+    getUser,
+    updateUser,
     useAuthUser,
     useAuthToken,
     initAuth,

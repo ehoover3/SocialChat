@@ -12,6 +12,14 @@ export const createUser = (userData) => {
   });
 };
 
+export const updateUser = async (userId, userData) => {
+  // Your logic to update user in the database
+  // For example:
+  const { name, username, email } = userData;
+  // Perform the update operation using your database client
+  return;
+};
+
 export const getUserByUsername = (username) => {
   return prisma.user.findUnique({
     where: {

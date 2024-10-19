@@ -51,7 +51,7 @@
         <template v-slot:name> Lists </template>
       </SidebarLeftTab> -->
 
-      <SidebarLeftTab>
+      <SidebarLeftTab to="/profile" :active="isActive('/profile')">
         <template v-slot:icon>
           <UserIcon />
         </template>
@@ -83,8 +83,12 @@
 </template>
 
 <script setup>
-import { HomeIcon } from "@heroicons/vue/solid";
-import { HashtagIcon, BellIcon, InboxIcon, BookmarkIcon, DocumentTextIcon, UserIcon, DotsCircleHorizontalIcon, PencilIcon, ChevronDownIcon } from "@heroicons/vue/outline";
+import { HomeIcon, UserIcon } from "@heroicons/vue/solid";
+import { useRoute } from "vue-router";
 
 const { defaultTransition } = useTailwindConfig();
+const route = useRoute();
+const isActive = (path) => {
+  return path === route.path;
+};
 </script>
