@@ -12,7 +12,7 @@
   </div>
 </template>
 <script setup>
-import { ChatIcon, RefreshIcon, HeartIcon, UploadIcon } from "@heroicons/vue/outline";
+import { ChatIcon } from "@heroicons/vue/outline";
 
 const emits = defineEmits(["onCommentClick"]);
 
@@ -29,8 +29,4 @@ const props = defineProps({
 
 const showStats = computed(() => props.compact);
 const size = computed(() => (props.compact ? 5 : 8));
-
-function generateRandomNumber() {
-  return Math.floor(Math.random() * 100);
-}
 </script>
