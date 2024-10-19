@@ -16,68 +16,12 @@
         <template v-slot:name> Home </template>
       </SidebarLeftTab>
 
-      <!-- <SidebarLeftTab>
-        <template v-slot:icon>
-          <HashtagIcon />
-        </template>
-        <template v-slot:name> Explore </template>
-      </SidebarLeftTab> -->
-
-      <!-- <SidebarLeftTab>
-        <template v-slot:icon>
-          <BellIcon />
-        </template>
-        <template v-slot:name> Notifications </template>
-      </SidebarLeftTab> -->
-
-      <!-- <SidebarLeftTab>
-        <template v-slot:icon>
-          <InboxIcon />
-        </template>
-        <template v-slot:name> Messages </template>
-      </SidebarLeftTab> -->
-
-      <!-- <SidebarLeftTab>
-        <template v-slot:icon>
-          <BookmarkIcon />
-        </template>
-        <template v-slot:name> Bookmarks </template>
-      </SidebarLeftTab> -->
-
-      <!-- <SidebarLeftTab>
-        <template v-slot:icon>
-          <DocumentTextIcon />
-        </template>
-        <template v-slot:name> Lists </template>
-      </SidebarLeftTab> -->
-
       <SidebarLeftTab to="/profile" :active="isActive('/profile')">
         <template v-slot:icon>
           <UserIcon />
         </template>
         <template v-slot:name> Profile </template>
       </SidebarLeftTab>
-
-      <!-- <SidebarLeftTab>
-        <template v-slot:icon>
-          <DotsCircleHorizontalIcon />
-        </template>
-        <template v-slot:name> More </template>
-      </SidebarLeftTab> -->
-
-      <div class="hidden xl:block">
-        <UIButton liquid size="lg">
-          <span class="font-bold"> Post Message </span>
-        </UIButton>
-      </div>
-
-      <div class="block xl:hidden">
-        <UIButton @on-click="emits('onTweet')">
-          <div class="w-6 h-6 font-bold">
-            <PencilIcon />
-          </div>
-        </UIButton>
-      </div>
     </div>
   </div>
 </template>
