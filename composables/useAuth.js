@@ -159,7 +159,6 @@ export default () => {
         await useFetchApi("/api/auth/logout", {
           method: "POST",
         });
-
         setToken(null);
         setUser(null);
         resolve();
