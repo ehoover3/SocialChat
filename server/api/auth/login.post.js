@@ -8,9 +8,7 @@ import { sendError } from "h3";
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event);
-
   const { username, password } = body;
-
   if (!username || !password) {
     return sendError(
       event,
@@ -20,9 +18,7 @@ export default defineEventHandler(async (event) => {
       })
     );
   }
-
   const user = await getUserByUsername(username);
-
   if (!user) {
     return sendError(
       event,
@@ -32,9 +28,7 @@ export default defineEventHandler(async (event) => {
       })
     );
   }
-
   const doesThePasswordMatch = await bcrypt.compare(password, user.password);
-
   if (!doesThePasswordMatch) {
     return sendError(
       event,
@@ -44,16 +38,12 @@ export default defineEventHandler(async (event) => {
       })
     );
   }
-
   const { accessToken, refreshToken } = generateTokens(user);
-
   await createRefreshToken({
     token: refreshToken,
     userId: user.id,
   });
-
   sendRefreshToken(event, refreshToken);
-
   return {
     access_token: accessToken,
     user: userTransformer(user),

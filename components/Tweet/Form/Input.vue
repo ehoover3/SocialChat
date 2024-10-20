@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="flex items-center flex-shrink-0 p-4 pb-0">
-      <div class="flex w-12 items-top">
+      <div class="flex w-12 items-top rounded-full border-2 border-white-300">
         <img :src="props.user?.profileImage" alt="" class="inline-block w-10 h-10 rounded-full" />
       </div>
       <div class="w-full p-2">

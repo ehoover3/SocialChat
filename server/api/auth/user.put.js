@@ -23,6 +23,7 @@ export default defineEventHandler(async (event) => {
     repeatPassword,
     email,
     name,
+    profileImage,
   });
 
   return {

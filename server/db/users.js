@@ -16,7 +16,7 @@ export const createUser = (userData) => {
 
 export const updateUser = async (id, userData) => {
   console.log("GOT HERE: server/db/users.js");
-
+  console.log("userData", userData);
   const finalUserData = {
     ...userData,
   };

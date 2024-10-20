@@ -110,14 +110,6 @@ export default () => {
             profileImage: userData.profileImage,
           },
         });
-        // setToken(data.access_token);
-        // setUser(data.user);
-
-        console.log("*****START");
-        console.log("userData.username: ", userData.username);
-        console.log("userData.password: ", userData.password);
-        console.log("*****END");
-        // await login({ username: userData.username, password: userData.password });
         resolve(true);
       } catch (error) {
         reject(error);

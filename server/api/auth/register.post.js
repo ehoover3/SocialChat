@@ -19,7 +19,7 @@ export default defineEventHandler(async (event) => {
     email,
     password,
     name,
-    profileImage: "https://picsum.photos/200/200",
+    profileImage: "./images/animals/elephant.png",
   };
   const user = await createUser(userData);
   const { accessToken, refreshToken } = generateTokens(user);

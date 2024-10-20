@@ -1,7 +1,7 @@
 <template>
   <div class="flex p-4">
-    <div>
-      <img class="w-10 h-10 rounded-full" :src="author.profileImage" alt="" />
+    <div class="rounded-full border-2 border-white-300">
+      <img class="w-10 h-10 rounded-full" :src="author.profileImage" alt="profile image" />
     </div>
 
     <div class="ml-3">
