@@ -23,7 +23,7 @@
 <script setup>
 import { reactive, ref, computed } from "vue";
 import useAuth from "@/composables/useAuth";
-const { useAuthUser, updateUser } = useAuth();
+const { useAuthUser, updateUser, setUser } = useAuth();
 
 const authUser = useAuthUser();
 const userData = reactive({ ...authUser.value });
@@ -40,7 +40,7 @@ const handleSave = async () => {
     await updateUser(userData);
     message.value = "Profile updated successfully!";
     success.value = true;
-    // setUser(userData);
+    setUser(userData);
   } catch (error) {
     console.log(error);
     message.value = "Error updating profile. Please try again.";

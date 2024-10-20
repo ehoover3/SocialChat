@@ -180,6 +180,7 @@ export default () => {
   return {
     signup,
     login,
+    setUser,
     getUser,
     updateUser,
     useAuthUser,
