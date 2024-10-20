@@ -1,17 +1,29 @@
+// server/api/auth/user.put.js
 import { sendError } from "h3";
-import { updateUser } from "../../db/users.js";
-import { userTransformer } from "~~/server/transformers/user.js";
+import { updateUser } from "../../db/users.js"; // Use an update method
+import { userTransformer } from "~/server/transformers/user.js";
 
 export default defineEventHandler(async (event) => {
-  const body = await readBody(event);
-  const { name, username, email } = body;
+  const authUser = event.context.auth?.user;
 
-  if (!name || !username || !email) {
+  if (!authUser) {
+    return sendError(event, createError({ statusCode: 401, statusMessage: "Unauthorized" }));
+  }
+
+  const body = await readBody(event);
+  const { username, password, repeatPassword, name, email, profileImage } = body;
+
+  if (!username || !email || !name) {
     return sendError(event, createError({ statusCode: 400, statusMessage: "Invalid params" }));
   }
 
-  const userId = event.context.auth.user.id; // Assuming you have auth context
-  const updatedUser = await updateUser(userId, { name, username, email });
+  const updatedUser = await updateUser(authUser.id, {
+    username,
+    password,
+    repeatPassword,
+    email,
+    name,
+  });
 
   return {
     user: userTransformer(updatedUser),

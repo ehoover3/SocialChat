@@ -1,3 +1,4 @@
+// server/middleware/auth.js
 import UrlPattern from "url-pattern";
 import { decodeAccessToken } from "../utils/jwt.js";
 import { sendError, eventHandler } from "h3";
@@ -8,7 +9,6 @@ export default defineEventHandler(async (event) => {
 
   const isHandledByThisMiddleware = endpoints.some((endpoint) => {
     const pattern = new UrlPattern(endpoint);
-
     return pattern.match(event.req.url);
   });
 
@@ -17,7 +17,6 @@ export default defineEventHandler(async (event) => {
   }
 
   const token = event.req.headers["authorization"]?.split(" ")[1] || null;
-
   const decoded = decodeAccessToken(token);
 
   if (!decoded) {
@@ -32,9 +31,7 @@ export default defineEventHandler(async (event) => {
 
   try {
     const userId = decoded.userId;
-
     const user = await getUserById(userId);
-
     event.context.auth = { user };
   } catch (error) {
     return;

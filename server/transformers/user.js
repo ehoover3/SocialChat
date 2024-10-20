@@ -1,3 +1,5 @@
+// server/transformers/user.js
+
 export const userTransformer = (user) => {
   return {
     id: user.id,

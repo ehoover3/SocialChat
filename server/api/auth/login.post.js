@@ -1,3 +1,4 @@
+// server/api/auth/login.post.js
 import { getUserByUsername } from "../../db/users.js";
 import bcrypt from "bcrypt";
 import { generateTokens, sendRefreshToken } from "../../utils/jwt.js";
@@ -15,7 +16,7 @@ export default defineEventHandler(async (event) => {
       event,
       createError({
         statusCode: 400,
-        statusMessage: "Ivalid params",
+        statusMessage: "Invalid params",
       })
     );
   }

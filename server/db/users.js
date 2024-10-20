@@ -1,3 +1,5 @@
+// server/db/users.js
+
 import { prisma } from ".";
 import bcrypt from "bcrypt";
 
@@ -12,12 +14,21 @@ export const createUser = (userData) => {
   });
 };
 
-export const updateUser = async (userId, userData) => {
-  // Your logic to update user in the database
-  // For example:
-  const { name, username, email } = userData;
-  // Perform the update operation using your database client
-  return;
+export const updateUser = async (id, userData) => {
+  console.log("GOT HERE: server/db/users.js");
+
+  const finalUserData = {
+    ...userData,
+  };
+
+  if (userData.password) {
+    finalUserData.password = bcrypt.hashSync(userData.password, 10);
+  }
+
+  return prisma.user.update({
+    where: { id },
+    data: finalUserData,
+  });
 };
 
 export const getUserByUsername = (username) => {

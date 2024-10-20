@@ -1,3 +1,5 @@
+// composables/useAuth.js
+
 import jwt_decode from "jwt-decode";
 
 export default () => {
@@ -57,7 +59,6 @@ export default () => {
 
         setToken(data.access_token);
         setUser(data.user);
-
         resolve(true);
       } catch (error) {
         reject(error);
@@ -91,11 +92,37 @@ export default () => {
   };
 
   const updateUser = async (userData) => {
-    const response = await useFetch("/api/auth/user", {
-      method: "PUT",
-      body: JSON.stringify(userData),
+    console.log("GOT HERE: composables/useAuth.js");
+    return new Promise(async (resolve, reject) => {
+      try {
+        const authToken = useAuthToken();
+        const data = await $fetch("/api/auth/user", {
+          method: "PUT",
+          headers: {
+            Authorization: `Bearer ${authToken.value}`,
+          },
+          body: {
+            username: userData.username,
+            password: userData.password,
+            repeatPassword: userData.repeatPassword,
+            email: userData.email,
+            name: userData.name,
+            profileImage: userData.profileImage,
+          },
+        });
+        // setToken(data.access_token);
+        // setUser(data.user);
+
+        console.log("*****START");
+        console.log("userData.username: ", userData.username);
+        console.log("userData.password: ", userData.password);
+        console.log("*****END");
+        // await login({ username: userData.username, password: userData.password });
+        resolve(true);
+      } catch (error) {
+        reject(error);
+      }
     });
-    return response;
   };
 
   const reRefreshAccessToken = () => {
