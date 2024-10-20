@@ -22,12 +22,28 @@
         </template>
         <template v-slot:name> Profile </template>
       </SidebarLeftTab>
+
+      <div class="hidden xl:block">
+        <UIButton liquid size="lg">
+          <span class="font-bold"> Log Out </span>
+        </UIButton>
+      </div>
+
+      <div class="block xl:hidden">
+        <UIButton @on-click="emits('onTweet')">
+          <div class="w-6 h-6 font-bold">
+            <LogoutIcon />
+          </div>
+        </UIButton>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
 import { HomeIcon, UserIcon } from "@heroicons/vue/solid";
+import { LogoutIcon } from "@heroicons/vue/outline";
+
 import { useRoute } from "vue-router";
 
 const { defaultTransition } = useTailwindConfig();
