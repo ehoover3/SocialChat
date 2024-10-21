@@ -1,3 +1,5 @@
+<!-- components/Tweet/Item/Actions/index.vue -->
+
 <template>
   <div class="flex items-center justify-start w-full">
     <TweetItemActionsIcon color="blue" @on-click="emits('onCommentClick')" :size="size">

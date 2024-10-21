@@ -1,12 +1,13 @@
+<!-- components/Tweet/Details.vue -->
+
 <template>
   <div>
     <TweetItem :tweet="props.tweet" />
-
     <TweetForm placeholder="Post your reply" :reply-to="props.tweet" :user="props.user" @on-success="handleFormSuccess" />
-
     <TweetListFeed :tweets="replies" />
   </div>
 </template>
+
 <script setup>
 const props = defineProps({
   tweet: {
@@ -18,7 +19,6 @@ const props = defineProps({
     required: true,
   },
 });
-
 const replies = computed(() => props.tweet?.replies || []);
 
 function handleFormSuccess(tweet) {

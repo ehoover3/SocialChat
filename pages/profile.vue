@@ -29,16 +29,12 @@
 import { reactive, ref, computed } from "vue";
 import useAuth from "@/composables/useAuth";
 const { useAuthUser, updateUser, setUser } = useAuth();
-
 const authUser = useAuthUser();
 const userData = reactive({ ...authUser.value });
-
 const message = ref("");
 const isLoading = ref(false);
 const success = ref(false);
-
-// List of animal images
-const animalImages = ["./images/animals/cat.png", "./images/animals/deer.png", "./images/animals/dog.png", "./images/animals/elephant.png", "./images/animals/fox.png", "./images/animals/monkey.png", "./images/animals/panda.png", "./images/animals/pig.png", "./images/animals/raccoon.png"];
+const animalImages = ["/images/animals/cat.png", "/images/animals/deer.png", "/images/animals/dog.png", "/images/animals/elephant.png", "/images/animals/fox.png", "/images/animals/monkey.png", "/images/animals/panda.png", "/images/animals/pig.png", "/images/animals/raccoon.png"];
 
 const handleSave = async () => {
   isLoading.value = true;

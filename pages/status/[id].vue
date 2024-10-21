@@ -1,10 +1,11 @@
+<!-- pages/status/[id].vue -->
+
 <template>
   <div>
     <MainSection title="Posted Message" :loading="loading">
       <Head>
         <Title></Title>
       </Head>
-
       <TweetDetails :user="user" :tweet="tweet" />
     </MainSection>
   </div>
@@ -29,7 +30,6 @@ async function getTweet() {
   loading.value = true;
   try {
     const response = await getTweetById(getTweetIdFromRoute());
-
     tweet.value = response.tweet;
   } catch (error) {
     console.log(error);

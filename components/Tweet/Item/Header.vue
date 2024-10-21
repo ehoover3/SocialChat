@@ -1,3 +1,5 @@
+<!-- components/Tweet/Item/Header.vue -->
+
 <template>
   <div class="flex p-4">
     <div class="rounded-full border-2 border-white-300">

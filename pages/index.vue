@@ -1,3 +1,5 @@
+<!-- pages/index.vue -->
+
 <template>
   <div>
     <MainSection title="Home" :loading="loading">

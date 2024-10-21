@@ -1,3 +1,5 @@
+<!-- components/Tweet/Item.vue -->
+
 <template>
   <div>
     <TweetItemHeader :tweet="props.tweet" />

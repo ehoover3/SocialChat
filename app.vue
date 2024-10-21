@@ -1,3 +1,5 @@
+<!-- app.vue -->
+
 <template>
   <div :class="{ dark: darkMode }">
     <div class="bg-white dark:bg-dim-900">
