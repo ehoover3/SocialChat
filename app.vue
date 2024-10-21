@@ -1,4 +1,4 @@
-app.vue
+<!-- app.vue -->
 
 <template>
   <div :class="{ dark: darkMode }">
@@ -15,13 +15,13 @@ app.vue
             </div>
           </div>
 
-          <!-- Bottom bar for mobile -->
+          <!-- Mobile Bottom Bar  -->
           <div class="md:hidden fixed bottom-0 left-0 right-0 p-4 bg-gray-800 text-white text-center">
-            <button @click="handleOpenTweetModal" class="bg-blue-500 px-4 py-2 rounded-full">Tweet</button>
+            <MobileBottomBar v-if="user" />
+            <!-- <button @click="handleOpenTweetModal" class="bg-blue-500 px-4 py-2 rounded-full">Tweet</button> -->
           </div>
 
           <!-- Main content -->
-          <!-- <main class="col-span-12 md:col-span-8 xl:col-span-6"> -->
           <main class="col-span-12 md:col-span-8 xl:col-span-6 pb-20 md:pb-0">
             <NuxtPage />
           </main>
