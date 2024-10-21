@@ -1,41 +1,30 @@
-# Nuxt 3 Minimal Starter
+# SocialMediaApp
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+This is a social media application built using Nuxt 3, incorporating features such as dark mode, authentication, and mobile-friendly UI components.
+
+## Features
+
+- **Nuxt 3 Framework**: Built with Nuxt 3 to leverage server-side rendering and full-stack capabilities.
+- **Tailwind CSS**: Utilized for modern, responsive UI design.
+- **Authentication**: Secure token-based user authentication.
+- **Mobile Support**: A mobile bottom bar for easy access to key features on mobile devices.
+- **Dark Mode**: Users can toggle between light and dark themes.
+- **Tweet Functionality**: Features include creating tweets, replying to tweets, and viewing detailed tweet status.
 
 ## Setup
 
-Make sure to install the dependencies:
+Before starting, install the dependencies:
 
 ```bash
-# npm
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
 ## Development Server
 
-Start the development server on `http://localhost:3000`:
+Start the development server at http://localhost:3000:
 
 ```bash
-# npm
 npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
 ## Production
@@ -43,34 +32,23 @@ bun run dev
 Build the application for production:
 
 ```bash
-# npm
 npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
 ```
 
-Locally preview production build:
+Locally preview the production build:
 
 ```bash
-# npm
 npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
-# SocialMediaApp
+## Dark Mode
+
+Dark mode is enabled by default and can be toggled dynamically.
+
+## Mobile Support
+
+The MobileBottomBar provides key functionality for mobile users, including a button to create new tweets.
+
+## Deployment
+
+For more details on deploying the app, check out the Nuxt 3 deployment documentation.
