@@ -1,27 +1,31 @@
+<!-- components/Auth/Form.vue -->
+
 <template>
   <div class="w-full">
-    <div class="flex justify-center">
-      <div class="w-10 h-10">
-        <LogoSocialMedia />
+    <form submit.prevent="handleAction">
+      <div class="flex justify-center">
+        <div class="w-10 h-10">
+          <LogoSocialMedia />
+        </div>
       </div>
-    </div>
-    <div class="pt-5 space-y-6">
-      <UIInput v-if="isSignup" label="Name" placeholder="Enter your name" v-model="data.name" />
-      <UIInput v-model="data.username" label="Username" placeholder="Enter your username" />
-      <UIInput v-if="isSignup" label="Email" placeholder="Enter your email" type="email" v-model="data.email" />
-      <UIInput label="Password" placeholder="Enter your password" type="password" v-model="data.password" />
-      <UIInput v-if="isSignup" label="Confirm Password" placeholder="Confirm your password" type="password" v-model="data.confirmPassword" />
+      <div class="pt-5 space-y-6">
+        <UIInput v-if="isSignup" label="Name" placeholder="Enter your name" v-model="data.name" />
+        <UIInput v-model="data.username" label="Username" placeholder="Enter your username" />
+        <UIInput v-if="isSignup" label="Email" placeholder="Enter your email" type="email" v-model="data.email" />
+        <UIInput label="Password" placeholder="Enter your password" type="password" v-model="data.password" />
+        <UIInput v-if="isSignup" label="Confirm Password" placeholder="Confirm your password" type="password" v-model="data.confirmPassword" />
 
-      <UIButton @click="handleAction" liquid :disabled="isButtonDisabled">
-        {{ isSignup ? "Sign Up" : "Login" }}
-      </UIButton>
+        <UIButton @click="handleAction" @keydown.enter="handleAction" liquid :disabled="isButtonDisabled">
+          {{ isSignup ? "Sign Up" : "Login" }}
+        </UIButton>
 
-      <div class="text-center pt-4">
-        <a @click="toggleMode" class="cursor-pointer text-blue-500">
-          {{ isSignup ? "Already have an account? Login" : "Don't have an account? Sign Up" }}
-        </a>
+        <div class="text-center pt-4">
+          <a @click="toggleMode" class="cursor-pointer text-blue-500">
+            {{ isSignup ? "Already have an account? Login" : "Don't have an account? Sign Up" }}
+          </a>
+        </div>
       </div>
-    </div>
+    </form>
   </div>
 </template>
 

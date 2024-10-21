@@ -1,3 +1,4 @@
+<!-- componentes/Auth/Page.vue -->
 <template>
   <div class="flex h-screen">
     <div class="relative flex-1 hidden w-0 lg:block">
