@@ -7,8 +7,10 @@
     <UIInput v-model="userData.name" label="Name" :placeholder="userData.name" />
     <UIInput v-model="userData.username" label="Username" :placeholder="userData.username" class="mt-4" />
     <UIInput v-model="userData.email" label="Email" type="email" :placeholder="userData.email" class="mt-4" />
-    <UIInput v-model="userData.password" label="Password" type="password" class="mt-4" placeholder="Leave blank to keep current password" />
-    <UIInput v-model="userData.repeatPassword" label="Repeat Password" type="password" class="mt-4" placeholder="Leave blank to keep current password" />
+    <UIInput v-model="userData.password" label="Password" type="password" class="mt-4" placeholder="Leave blank to keep current password" @input="clearPasswordError" />
+    <UIInput v-model="userData.repeatPassword" label="Repeat Password" type="password" class="mt-4" placeholder="Leave blank to keep current password" @input="clearPasswordError" />
+
+    <div v-if="showPasswordError && passwordMismatch" class="mt-2 text-red-500">Passwords do not match</div>
 
     <label class="block mt-4 text-gray-800 dark:text-white">Profile Image</label>
     <div class="grid grid-cols-3 gap-2 mt-2">
@@ -34,9 +36,25 @@ const userData = reactive({ ...authUser.value });
 const message = ref("");
 const isLoading = ref(false);
 const success = ref(false);
+const showPasswordError = ref(false);
 const animalImages = ["/images/animals/cat.png", "/images/animals/deer.png", "/images/animals/dog.png", "/images/animals/elephant.png", "/images/animals/fox.png", "/images/animals/monkey.png", "/images/animals/panda.png", "/images/animals/pig.png", "/images/animals/raccoon.png"];
 
+const passwordMismatch = computed(() => {
+  return userData.password && userData.repeatPassword && userData.password !== userData.repeatPassword;
+});
+
+const clearPasswordError = () => {
+  showPasswordError.value = false;
+};
+
 const handleSave = async () => {
+  showPasswordError.value = true;
+  if (passwordMismatch.value) {
+    message.value = "Passwords do not match!";
+    success.value = false;
+    return;
+  }
+
   isLoading.value = true;
   try {
     console.table(`profile.vue > userData: ${JSON.stringify(userData)}`);
