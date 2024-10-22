@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-3xl mx-auto p-6 text-gray-800 dark:text-gray-100">
+  <div class="max-w-3xl mx-auto p-6 text-gray-800 dark:text-gray-100 bg-white/80 dark:bg-dim-900/80">
     <h1 class="text-3xl font-bold mb-4 text-center">Privacy Policy</h1>
     <p class="text-sm text-gray-500 dark:text-gray-400 mb-8 text-center">Effective Date: October 17, 2024</p>
 
