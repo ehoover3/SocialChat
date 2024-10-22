@@ -1,3 +1,5 @@
+<!-- components/Sidebar/Right/index.vue -->
+
 <template>
   <div clas="flex flex-col">
     <!-- Search bar -->
@@ -10,34 +12,13 @@
       <input @keydown.enter="handleSearch" v-model="search" class="flex items-center w-full pl-12 text-sm font-normal text-black bg-gray-200 border border-gray-200 rounded-full shadow dark:text-gray-100 dark:bg-dim-400 dark:border-dim-400 focus:bg-gray-100 dark:focus:bg-dim-900 focus:outline-none focus:border focus:border-blue-200 h-9" placeholder="Search tweet" type="text" />
     </div>
 
-    <!-- Preview Card : What's happening -->
-    <SidebarRightPreviewCard title="What's happening">
-      <SidebarRightPreviewCardItem v-for="whatsHappening in whatsHappeningItems">
-        <div>
-          <h2 class="font-bold text-gray-800 text-md dark:text-white">{{ whatsHappening.title }}</h2>
-          <p class="text-xs text-gray-400">
-            {{ whatsHappening.count }}
-          </p>
-        </div>
-      </SidebarRightPreviewCardItem>
-    </SidebarRightPreviewCard>
-
-    <!-- Preview Card : Who to follow -->
-    <SidebarRightPreviewCard title="Who to follow">
-      <SidebarRightPreviewCardItem v-for="whoToFollow in whoToFollowItems">
-        <div class="flex flex-row items-center justify-between p-2">
-          <div class="flex flex-row">
-            <img class="w-10 h-10 rounded-full" :src="whoToFollow.image" :alt="whoToFollow.name" />
-
-            <div class="flex flex-col ml-2">
-              <h1 class="text-sm font-bold text-gray-900 dark:text-white">{{ whoToFollow.name }}</h1>
-              <p class="text-xs text-gray-400">{{ whoToFollow.handle }}</p>
-            </div>
-          </div>
-          <div class="flex h-full">
-            <button class="px-4 py-2 text-xs font-bold text-white bg-black rounded-full dark:text-black dark:bg-white">Follow</button>
-          </div>
-        </div>
+    <!-- Portfolio section -->
+    <SidebarRightPreviewCard title="Portfolio">
+      <SidebarRightPreviewCardItem>
+        <a href="https://erichoover.org/" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center flex-col p-2">
+          <img class="w-16 h-16 rounded-full" src="/images/profile.png" alt="Profile" />
+          <p class="mt-2 text-sm font-bold text-blue-500 cursor-pointer hover:underline">See my full portfolio</p>
+        </a>
       </SidebarRightPreviewCardItem>
     </SidebarRightPreviewCard>
 
