@@ -3,9 +3,6 @@
 <template>
   <div class="min-h-screen bg-white dark:bg-dim-900">
     <MainSection title="Posted Message" :loading="loading">
-      <Head>
-        <Title></Title>
-      </Head>
       <TweetDetails :user="user" :tweet="tweet" />
     </MainSection>
   </div>

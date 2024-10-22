@@ -1,6 +1,10 @@
 <!-- app.vue -->
 
 <template>
+  <Head>
+    <Title>Social Media</Title>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+  </Head>
   <div :class="{ dark: darkMode }">
     <div class="bg-white dark:bg-dim-900">
       <LoadingPage v-if="isAuthLoading" />
