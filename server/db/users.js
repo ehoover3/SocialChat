@@ -16,13 +16,15 @@ export const createUser = (userData) => {
 
 export const updateUser = async (id, userData) => {
   console.log("GOT HERE: server/db/users.js");
-  console.log("userData", userData);
+  console.log("!!! userData", userData);
   const finalUserData = {
     ...userData,
   };
 
-  if (userData.password) {
+  if (userData.password && userData.password.trim() !== "") {
     finalUserData.password = bcrypt.hashSync(userData.password, 10);
+  } else {
+    delete finalUserData.password;
   }
 
   return prisma.user.update({

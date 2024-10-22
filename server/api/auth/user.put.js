@@ -11,7 +11,7 @@ export default defineEventHandler(async (event) => {
   }
 
   const body = await readBody(event);
-  const { username, password, repeatPassword, name, email, profileImage } = body;
+  const { username, password, name, email, profileImage } = body;
 
   if (!username || !email || !name) {
     return sendError(event, createError({ statusCode: 400, statusMessage: "Invalid params" }));
@@ -20,7 +20,6 @@ export default defineEventHandler(async (event) => {
   const updatedUser = await updateUser(authUser.id, {
     username,
     password,
-    repeatPassword,
     email,
     name,
     profileImage,

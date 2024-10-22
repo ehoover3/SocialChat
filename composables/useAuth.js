@@ -22,7 +22,7 @@ export default () => {
     authLoading.value = value;
   };
 
-  const signup = ({ name, username, email, password, repeatPassword }) => {
+  const signup = ({ name, username, email, password }) => {
     return new Promise(async (resolve, reject) => {
       try {
         const data = await $fetch("/api/auth/register", {
@@ -30,7 +30,6 @@ export default () => {
           body: {
             username,
             password,
-            repeatPassword,
             email,
             name,
           },
@@ -104,7 +103,6 @@ export default () => {
           body: {
             username: userData.username,
             password: userData.password,
-            repeatPassword: userData.repeatPassword,
             email: userData.email,
             name: userData.name,
             profileImage: userData.profileImage,
