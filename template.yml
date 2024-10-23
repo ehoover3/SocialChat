@@ -7,69 +7,74 @@ Parameters:
   ServiceName:
     Type: String
     Default: "aws_socialmediaapp"
-    Description: The name of the ECS service
+    Description: The name of the ECS service to deploy the website
   AdminRole:
     Type: String
-    Description: The name of admin role
+    Description: The name of the IAM role that provides administrative permissions
   DeployEnvironment:
     Type: String
     AllowedValues:
       - development
       - qualityAssurance
       - production
+    Description: The deployment environment (development, quality assurance, or production)
     DomainName:
       Type: String
-      Description: The domain name
+      Description: The custom domain name to associate with the application (e.g., myapp.com)
     HostedZoneId:
       Type: String
-      Description: Route 53 Hosted Zone ID for the domain name
+      Description: The Route 53 Hosted Zone ID for the given domain name
     NodeEnv:
       Type: String
       Default: production
+      Description: The runtime environment for the Node.js application (e.g., production, development)
     ContainerCpu:
       Type: Number
       Default: 256
-      Description: The amount of CPU to give a container
+      Description: The amount of CPU (in vCPU units) allocated to the container
     ContainerMemory:
       Type: Number
       Default: 512
-      Description: The amount of memory in megabytes to give a container
+      Description: The memory size (in megabytes) allocated to the container
     ContainerPort:
       Type: Number
-      Description: The port to map from the task's container
+      Description: The port number exposed by the container application (e.g., 80, 3000)
     InitialTaskCount:
       Type: Number
-      Description: The amount of tasks ECS initially starts
+      Description: The initial number of ECS tasks (containers) to run when the service is deployed
     MaxTaskCount:
       Type: Number
       Default: 3
-      Description: The maximum amount of tasks autoscaling allows
+      Description: The maximum number of ECS tasks allowed for autoscaling
     MinTaskCount:
       Type: Number
       Default: 1
-      Description: The minimum amount of tasks autoscaling allows
+      Description: The minimum number of ECS tasks allowed for autoscaling
     HealthCheckIntervalSeconds:
       Type: Number
       Default: 30
-      Description: The number of seconds between load balancer heatlh checks on targets
+      Description: The interval (in seconds) between health checks performed by the load balancer on ECS tasks
     HealthCheckPath:
       Type: String
       Default: /
-      Description: The path the laod balancer uses to check target health
+      Description: The path that the load balancer uses to perform health checks (e.g., `/status`)
     CPUScalingPercentage:
       Type: Number
       Default: 50
-      Description: Scale out when CPU utilization reaches this percentage
+      Description: The CPU utilization percentage at which autoscaling should increase the number of ECS tasks
     RequestsPerMinuteScaling:
       Type: Number
       Default: 1000
-      Description: Scale out/in as number of requests per minute go above/below this value
+      Description: The number of requests per minute that trigger autoscaling (above or below this value)
     PublicSubnets:
       Type: String
+      Description: A comma-separated list of public subnet IDs for deploying the ECS service
     PrivateSubnets:
       Type: String
+      Description: A comma-separated list of private subnet IDs for internal service components (e.g., databases)
     DefaultVPC:
       Type: String
+      Description: The ID of the default VPC to use for the ECS service deployment
 
 Conditions:
   UseCertificates:
