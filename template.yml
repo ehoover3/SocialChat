@@ -1,0 +1,83 @@
+%YAML 1.1
+---
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: "AWS:Serverless-2016-10-31"
+
+Parameters:
+  ServiceName:
+    Type: String
+    Default: "aws_socialmediaapp"
+    Description: The name of the ECS service
+  AdminRole:
+    Type: String
+    Description: The name of admin role
+  DeployEnvironment:
+    Type: String
+    AllowedValues:
+      - development
+      - qualityAssurance
+      - production
+    DomainName:
+      Type: String
+      Description: The domain name
+    HostedZoneId:
+      Type: String
+      Description: Route 53 Hosted Zone ID for the domain name
+    NodeEnv:
+      Type: String
+      Default: production
+    ContainerCpu:
+      Type: Number
+      Default: 256
+      Description: The amount of CPU to give a container
+    ContainerMemory:
+      Type: Number
+      Default: 512
+      Description: The amount of memory in megabytes to give a container
+    ContainerPort:
+      Type: Number
+      Description: The port to map from the task's container
+    InitialTaskCount:
+      Type: Number
+      Description: The amount of tasks ECS initially starts
+    MaxTaskCount:
+      Type: Number
+      Default: 3
+      Description: The maximum amount of tasks autoscaling allows
+    MinTaskCount:
+      Type: Number
+      Default: 1
+      Description: The minimum amount of tasks autoscaling allows
+    HealthCheckIntervalSeconds:
+      Type: Number
+      Default: 30
+      Description: The number of seconds between load balancer heatlh checks on targets
+    HealthCheckPath:
+      Type: String
+      Default: /
+      Description: The path the laod balancer uses to check target health
+    CPUScalingPercentage:
+      Type: Number
+      Default: 50
+      Description: Scale out when CPU utilization reaches this percentage
+    RequestsPerMinuteScaling:
+      Type: Number
+      Default: 1000
+      Description: Scale out/in as number of requests per minute go above/below this value
+    PublicSubnets:
+      Type: String
+    PrivateSubnets:
+      Type: String
+    DefaultVPC:
+      Type: String
+
+Conditions:
+  UseCertificates:
+    Fn::Equals:
+      - !Ref DeployEnvironment
+      - production
+
+Resources:
+  Cluster:
+    Type: AWS::ECS::Cluster
+    Properties: {}

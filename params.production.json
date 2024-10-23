@@ -6,7 +6,7 @@
     "ContainerMemory": "512",
     "ContainerPort": "3000",
     "InitialTaskCount": "1",
-    "MaxTaskCount": "5",
+    "MaxTaskCount": "3",
     "HealthCheckPath": "/",
     "CPUScalingPercentage": "50",
     "RequestsPerMinuteScaling": "1000",
