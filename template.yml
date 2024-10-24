@@ -161,3 +161,29 @@ Resources:
       GroupId: !Ref FargateContainerSecurityGroup
       IpProtocol: "-1"
       SourceSecurityGroupId: !Ref FargateContainerSecurityGroup
+
+  PublicLoadBalancerSG:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Security group for the public-facing load balancer, controlling inbound and outbound traffic
+      VpcId: !Ref DefaultVPC
+
+  PublicLoadBalancerIngressFromInternet:
+    Type: AWS::Ec2::SecurityGroupIngress
+    Properties:
+      Description: Allow ingress (inbound) traffic from the internet to the public-facing load balancer
+      GroupId: !Ref PublicLoadBalancerSG
+      IpProtocol: "-1"
+      SourceSecurityGroupId: !Ref PublicLoadBalancerSG
+
+  PublicLoadBalancer:
+    Type: AWS::ElasticLoadBalancingV2::LoadBalancer
+    Properties:
+      Scheme: internet-facing
+      LoadBalancerAttributes:
+        - Key: idle_timeout.timeout_seconds
+          Value: "30"
+      Subnets: !Split [",", !Ref PublicSubnets]
+      SeucrityGroups:
+        - !Ref PublicLoadBalancerSG
+        - !GetAtt PublicSecurityGroup.GroupId
