@@ -139,3 +139,25 @@ Resources:
                   - xray:GetSamplingStatisticSummaries
                   - secretmanager:GetSecretValue
                 Resource: "*"
+
+  FargateContainerSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescriptio: A security group providing access control to Fargate containers
+      VpcId: !Ref DefaultVPC
+
+  EcsSecurityGroupIngressFromPublicALB:
+    Type: AWS::EC2::SecurityGroupIngress
+    Properties:
+      Description: Allow ingress traffic (incoming traffic) from the public Application Load Balancer (ALB) to Fargate containers
+      GroupId: !Ref FargateContainerSecurityGroup
+      IpProtocol: "-1"
+      SourceSecurityGroupId: !Ref PublicLoadBalancerSG
+
+  EcsSecurityGroupIngressFromSelf:
+    Type: AWS::EC2::SecurityGroupIngress
+    Properties:
+      Description: Allow ingress traffic (incoming traffic) between Fargate containers within the same security group
+      GroupId: !Ref FargateContainerSecurityGroup
+      IpProtocol: "-1"
+      SourceSecurityGroupId: !Ref FargateContainerSecurityGroup
