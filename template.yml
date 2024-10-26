@@ -230,3 +230,26 @@ Resources:
       LoadBalancerAr: !Ref PublicLoadBalancer
       Port: 443
       Protocol: HTTPS
+
+  PublicLoadBalancerRecordSet:
+    Type: AWS::Route53::RecordSet
+    Properties:
+      AliasTarget:
+        DNSName: !GetAtt PublicLoadBalancer.DNSName
+        HostedZoneId: !GetAtt PublicLoadBalancer.CanonicalHostedZoneID
+      HostedZoneId: !Ref HostedZoneId
+      Name: !Ref DomainName
+      Type: A
+
+  PublicLoadBalancerWWWRecordSet:
+    Type: AWS::Route53::RecordSet
+    Properties:
+      AliasTarget:
+        DNSName: !GetAtt PublicLoadBalancer.DNSName
+        HostedZoneId: !GetAtt PublicLoadBalancer.CanonicalHostedZoneID
+      HostedZoneId: !Ref HostedZoneId
+      Name: !Join
+        - "."
+        - - "www"
+          - !Ref DomainName
+      Type: A
