@@ -218,3 +218,15 @@ Resources:
       LoadBalancerArn: !Ref PublicLoadBalancer
       Port: 80
       Protocol: HTTP
+
+  PublicLoadBalancerHttpsListener:
+    Type: AWS::ElasticLoadBalancingV2::Listener
+    Properties:
+      Certificates:
+        - CertificateArn: !Ref HttpsCertificate
+      DefaultActions:
+        - TargetGroupArn: !Ref TargetGroup
+          Type: forward
+      LoadBalancerAr: !Ref PublicLoadBalancer
+      Port: 443
+      Protocol: HTTPS
