@@ -29,9 +29,15 @@ jobs:
       - name: Upload to S3
         run: aws s3 cp ./social-media-app.zip s3://portfolio-projects-zipped-code/social-media-app.zip
 
-    #   - name: Deploy to Elastic Beanstalk
-    #     run: |
-    #       aws elasticbeanstalk create-application-version --application-name your-app-name \
-    #         --version-label latest --source-bundle S3Bucket="your-s3-bucket-name",S3Key="app.zip"
-    #       aws elasticbeanstalk update-environment --environment-name your-environment-name \
-    #         --version-label latest
+      - name: Deploy to Elastic Beanstalk - Create Application Version
+        run: |
+          aws elasticbeanstalk create-application-version \
+            --application-name social-media-app \
+            --version-label latest \
+            --source-bundle S3Bucket="portfolio-projects-zipped-code",S3Key="social-media-app.zip"
+
+      - name: Deploy to Elastic Beanstalk - Update Environment
+        run: |
+          aws elasticbeanstalk update-environment \
+            --environment-name production \
+            --version-label latest
