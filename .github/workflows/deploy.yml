@@ -47,7 +47,7 @@ jobs:
         id: check_environment
         run: |
           APP_NAME="social-media-app"
-          ENV_NAME="production"
+          ENV_NAME="Social-media-app-env" # Updated to existing environment name
           echo "Checking if environment '$ENV_NAME' exists for application '$APP_NAME'..."
           if ! aws elasticbeanstalk describe-environments --application-name "$APP_NAME" --environment-names "$ENV_NAME" > /dev/null 2>&1; then
             echo "Creating environment $ENV_NAME..."
@@ -63,21 +63,10 @@ jobs:
             echo "Environment $ENV_NAME already exists."
           fi
 
-      - name: Debug Applications
-        run: |
-          echo "Listing applications..."
-          aws elasticbeanstalk describe-applications
-
-      - name: Debug Environments
-        run: |
-          APP_NAME="social-media-app"
-          echo "Listing environments for application '$APP_NAME'..."
-          aws elasticbeanstalk describe-environments --application-name "$APP_NAME"
-
       - name: Deploy to Elastic Beanstalk
         run: |
           APP_NAME="social-media-app"
-          ENV_NAME="production"
+          ENV_NAME="Social-media-app-env" # Updated to existing environment name
           echo "Deploying to Elastic Beanstalk application '$APP_NAME' and environment '$ENV_NAME'..."
           aws elasticbeanstalk create-application-version \
             --application-name "$APP_NAME" \
