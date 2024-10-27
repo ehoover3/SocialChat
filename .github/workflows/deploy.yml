@@ -24,6 +24,14 @@ jobs:
       - name: Generate Deployment Package
         run: zip -r nodejs-app-build.zip .
 
+      - name: Create EB Application
+        run: |
+          aws elasticbeanstalk create-application --application-name nodejs-app --description "Node.js Application" || echo "Application already exists"
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
+
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v21
         with:
@@ -32,5 +40,5 @@ jobs:
           application_name: "nodejs-app"
           environment_name: "nodejs-app-env"
           version_label: ${{ github.sha }}
-          region: ${{secrets.AWS_REGION}}
+          region: ${{ secrets.AWS_REGION }}
           deployment_package: nodejs-app-build.zip
