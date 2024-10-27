@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch: # Allows manual trigger
 
 jobs:
   deploy:
@@ -29,17 +30,22 @@ jobs:
       - name: Upload to S3
         run: aws s3 cp ./social-media-app.zip s3://portfolio-projects-zipped-code/social-media-app.zip
 
+      - name: Check if Elastic Beanstalk Application Exists and Create if Needed
+        run: |
+          aws elasticbeanstalk describe-applications --application-names "social-media-app" || \
+          aws elasticbeanstalk create-application --application-name "social-media-app"
+
       - name: Deploy to Elastic Beanstalk
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
           aws elasticbeanstalk create-application-version \
-            --application-name "SocialMediaApp" \
+            --application-name "social-media-app" \
             --version-label "v-${{ github.sha }}" \
             --source-bundle S3Bucket="portfolio-projects-zipped-code",S3Key="social-media-app.zip"
 
           aws elasticbeanstalk update-environment \
-            --application-name "SocialMediaApp" \
+            --application-name "social-media-app" \
             --environment-name "YourEnvironmentName" \
             --version-label "v-${{ github.sha }}"
