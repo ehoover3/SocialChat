@@ -54,7 +54,7 @@ jobs:
         if: env.exists == 'false'
         run: |
           echo "Creating environment 'nodejs-app-env' for application 'nodejs-app'..."
-          aws elasticbeanstalk create-environment --application-name nodejs-app --environment-name nodejs-app-env --solution-stack-name "64bit Amazon Linux 2 v3.4.10 running Node.js 20"
+          aws elasticbeanstalk create-environment --application-name nodejs-app --environment-name nodejs-app-env --solution-stack-name "64bit Amazon Linux 2 v3.5.3 running Node.js 20" # Update this name if needed
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
