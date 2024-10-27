@@ -34,7 +34,7 @@ jobs:
         run: |
           APP_NAME="social-media-app"
           echo "Checking if application '$APP_NAME' exists..."
-          if ! aws elasticbeanstalk describe-applications --application-names "$APP_NAME"; then
+          if ! aws elasticbeanstalk describe-applications --application-names "$APP_NAME" > /dev/null 2>&1; then
             echo "Creating application $APP_NAME..."
             aws elasticbeanstalk create-application --application-name "$APP_NAME"
           else
@@ -46,7 +46,7 @@ jobs:
           APP_NAME="social-media-app"
           ENV_NAME="production"
           echo "Checking if environment '$ENV_NAME' exists for application '$APP_NAME'..."
-          if ! aws elasticbeanstalk describe-environments --application-name "$APP_NAME" --environment-names "$ENV_NAME"; then
+          if ! aws elasticbeanstalk describe-environments --application-name "$APP_NAME" --environment-names "$ENV_NAME" > /dev/null 2>&1; then
             echo "Creating environment $ENV_NAME..."
             aws elasticbeanstalk create-environment \
               --application-name "$APP_NAME" \
