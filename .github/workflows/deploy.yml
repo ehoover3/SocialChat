@@ -3,7 +3,8 @@ name: CICD
 on:
   push:
     branches:
-      - elastic-beanstalk-ec2
+      - main
+  workflow_dispatch: # Allows manual trigger
 
 jobs:
   build-and-deploy:
