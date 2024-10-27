@@ -63,6 +63,17 @@ jobs:
             echo "Environment $ENV_NAME already exists."
           fi
 
+      - name: Debug Applications
+        run: |
+          echo "Listing applications..."
+          aws elasticbeanstalk describe-applications
+
+      - name: Debug Environments
+        run: |
+          APP_NAME="social-media-app"
+          echo "Listing environments for application '$APP_NAME'..."
+          aws elasticbeanstalk describe-environments --application-name "$APP_NAME"
+
       - name: Deploy to Elastic Beanstalk
         run: |
           APP_NAME="social-media-app"
