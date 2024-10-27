@@ -14,67 +14,26 @@ jobs:
       - name: Checkout the code
         uses: actions/checkout@v2
 
-      - name: Zip codebase
-        run: zip -r ./social-media-app.zip .
+      - name: Create ZIP deployment package
+        run: zip -r deploy_package.zip ./
 
-      - name: List files
-        run: ls -l
-
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v2
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}
+          aws-access-key-id: ${{ secrets.ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.SECRET_ACCESS_KEY }}
+          aws-region: "us-east-1"
 
-      - name: Upload to S3
-        run: aws s3 cp ./social-media-app.zip s3://portfolio-projects-zipped-code/social-media-app.zip
+      - name: Upload package to S3 bucket
+        run: aws s3 cp deploy_package.zip s3://my-awesome-app-deploy-andrey/
 
-      - name: Ensure Application Exists
-        id: check_application
+      - name: Create new ElasticBeanstalk Application Version
         run: |
-          APP_NAME="social-media-app"
-          echo "Checking if application '$APP_NAME' exists..."
-          if ! aws elasticbeanstalk describe-applications --application-names "$APP_NAME" > /dev/null 2>&1; then
-            echo "Creating application $APP_NAME..."
-            aws elasticbeanstalk create-application --application-name "$APP_NAME"
-            echo "Application '$APP_NAME' created."
-          else
-            echo "Application $APP_NAME already exists."
-          fi
-
-      - name: Ensure Environment Exists
-        id: check_environment
-        run: |
-          APP_NAME="social-media-app"
-          ENV_NAME="Social-media-app-env" # Updated to existing environment name
-          echo "Checking if environment '$ENV_NAME' exists for application '$APP_NAME'..."
-          if ! aws elasticbeanstalk describe-environments --application-name "$APP_NAME" --environment-names "$ENV_NAME" > /dev/null 2>&1; then
-            echo "Creating environment $ENV_NAME..."
-            aws elasticbeanstalk create-environment \
-              --application-name "$APP_NAME" \
-              --environment-name "$ENV_NAME" \
-              --solution-stack-name "64bit Amazon Linux 2 v5.4.0 running Node.js 14" \
-              --version-label "v-${{ github.sha }}"
-            echo "Waiting for environment to be created..."
-            aws elasticbeanstalk wait environment-exists --application-name "$APP_NAME" --environment-name "$ENV_NAME"
-            echo "Environment '$ENV_NAME' created."
-          else
-            echo "Environment $ENV_NAME already exists."
-          fi
-
-      - name: Deploy to Elastic Beanstalk
-        run: |
-          APP_NAME="social-media-app"
-          ENV_NAME="Social-media-app-env" # Updated to existing environment name
-          echo "Deploying to Elastic Beanstalk application '$APP_NAME' and environment '$ENV_NAME'..."
           aws elasticbeanstalk create-application-version \
-            --application-name "$APP_NAME" \
-            --version-label "v-${{ github.sha }}" \
-            --source-bundle S3Bucket="portfolio-projects-zipped-code",S3Key="social-media-app.zip" || echo "Failed to create application version."
+          --application-name MyAwesomeApp \
+          --source-bundle S3Bucket="my-awesome-app-deploy-andrey",S3Key="deploy_package.zip" \
+          --version-label "ver-${{ github.sha }}" \
+          --description "commit-sha-${{ github.sha }}"
 
-          # Update the environment to the new version
-          aws elasticbeanstalk update-environment \
-            --application-name "$APP_NAME" \
-            --environment-name "$ENV_NAME" \
-            --version-label "v-${{ github.sha }}"
+      - name: Deploy new ElasticBeanstalk Application Version
+        run: aws elasticbeanstalk update-environment --environment-name Myawesomeapp-env-1 --version-label "ver-${{ github.sha }}"
