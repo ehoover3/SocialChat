@@ -25,6 +25,17 @@ jobs:
       - name: Initialize EB CLI
         run: |
           eb init -p node.js your-app-name --region ${{ secrets.AWS_REGION }}
+
+      - name: List Environments
+        run: |
+          eb list
+
+      - name: Create Environment
+        run: |
+          eb create your-environment-name || echo "Environment already exists or error occurred."
+
+      - name: Use Environment
+        run: |
           eb use your-environment-name
 
       - name: Deploy to Elastic Beanstalk
