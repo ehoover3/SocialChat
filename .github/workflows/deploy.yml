@@ -30,10 +30,13 @@ jobs:
       - name: Upload to S3
         run: aws s3 cp ./social-media-app.zip s3://portfolio-projects-zipped-code/social-media-app.zip
 
-      - name: Check if Elastic Beanstalk Application Exists and Create if Needed
+      - name: Ensure Application Exists
         run: |
           aws elasticbeanstalk describe-applications --application-names "social-media-app" || \
           aws elasticbeanstalk create-application --application-name "social-media-app"
+
+      - name: Wait for Application to Be Created
+        run: sleep 10 # Waits 10 seconds for the application to be fully registered
 
       - name: Deploy to Elastic Beanstalk
         env:
