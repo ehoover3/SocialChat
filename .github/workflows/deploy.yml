@@ -33,7 +33,7 @@ jobs:
       - name: Ensure Application Exists
         run: |
           APP_NAME="social-media-app"
-          # Check if application exists, if not, create it
+          echo "Checking if application '$APP_NAME' exists..."
           if ! aws elasticbeanstalk describe-applications --application-names "$APP_NAME"; then
             echo "Creating application $APP_NAME..."
             aws elasticbeanstalk create-application --application-name "$APP_NAME"
@@ -43,11 +43,16 @@ jobs:
 
       - name: Ensure Environment Exists
         run: |
+          APP_NAME="social-media-app"
           ENV_NAME="production"
-          # Check if environment exists, if not, create it
+          echo "Checking if environment '$ENV_NAME' exists for application '$APP_NAME'..."
           if ! aws elasticbeanstalk describe-environments --application-name "$APP_NAME" --environment-names "$ENV_NAME"; then
             echo "Creating environment $ENV_NAME..."
-            aws elasticbeanstalk create-environment --application-name "$APP_NAME" --environment-name "$ENV_NAME" --solution-stack-name "64bit Amazon Linux 2 v5.4.0 running Node.js 14" --version-label "v-${{ github.sha }}"
+            aws elasticbeanstalk create-environment \
+              --application-name "$APP_NAME" \
+              --environment-name "$ENV_NAME" \
+              --solution-stack-name "64bit Amazon Linux 2 v5.4.0 running Node.js 14" \
+              --version-label "v-${{ github.sha }}"
             echo "Waiting for environment to be created..."
             aws elasticbeanstalk wait environment-exists --application-name "$APP_NAME" --environment-name "$ENV_NAME"
           else
@@ -56,6 +61,9 @@ jobs:
 
       - name: Deploy to Elastic Beanstalk
         run: |
+          APP_NAME="social-media-app"
+          ENV_NAME="production"
+          echo "Deploying to Elastic Beanstalk application '$APP_NAME' and environment '$ENV_NAME'..."
           aws elasticbeanstalk create-application-version \
             --application-name "$APP_NAME" \
             --version-label "v-${{ github.sha }}" \
