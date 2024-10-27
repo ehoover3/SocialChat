@@ -31,17 +31,20 @@ jobs:
         run: aws s3 cp ./social-media-app.zip s3://portfolio-projects-zipped-code/social-media-app.zip
 
       - name: Ensure Application Exists
+        id: check_application
         run: |
           APP_NAME="social-media-app"
           echo "Checking if application '$APP_NAME' exists..."
           if ! aws elasticbeanstalk describe-applications --application-names "$APP_NAME" > /dev/null 2>&1; then
             echo "Creating application $APP_NAME..."
             aws elasticbeanstalk create-application --application-name "$APP_NAME"
+            echo "Application '$APP_NAME' created."
           else
             echo "Application $APP_NAME already exists."
           fi
 
       - name: Ensure Environment Exists
+        id: check_environment
         run: |
           APP_NAME="social-media-app"
           ENV_NAME="production"
@@ -55,6 +58,7 @@ jobs:
               --version-label "v-${{ github.sha }}"
             echo "Waiting for environment to be created..."
             aws elasticbeanstalk wait environment-exists --application-name "$APP_NAME" --environment-name "$ENV_NAME"
+            echo "Environment '$ENV_NAME' created."
           else
             echo "Environment $ENV_NAME already exists."
           fi
