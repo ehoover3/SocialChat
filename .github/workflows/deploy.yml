@@ -27,6 +27,10 @@ jobs:
       - name: Upload package to S3 bucket
         run: aws s3 cp deploy_package.zip s3://portfolio-projects-zipped-code/
 
+      - name: Create Elastic Beanstalk Application
+        run: |
+          aws elasticbeanstalk create-application --application-name SocialMediaApp --description "Social Media Application" || echo "Application already exists"
+
       - name: Create new ElasticBeanstalk Application Version
         run: |
           aws elasticbeanstalk create-application-version \
