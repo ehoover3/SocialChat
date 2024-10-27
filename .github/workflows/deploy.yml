@@ -32,8 +32,12 @@ jobs:
 
       - name: Ensure Application Exists
         run: |
-          aws elasticbeanstalk describe-applications --application-names "social-media-app" || \
-          aws elasticbeanstalk create-application --application-name "social-media-app"
+          if ! aws elasticbeanstalk describe-applications --application-names "social-media-app"; then
+            echo "Creating application social-media-app..."
+            aws elasticbeanstalk create-application --application-name "social-media-app"
+          else
+            echo "Application social-media-app already exists."
+          fi
 
       - name: Wait for Application to Be Created
         run: sleep 10 # Waits 10 seconds for the application to be fully registered
