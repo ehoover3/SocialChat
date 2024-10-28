@@ -62,12 +62,6 @@ jobs:
         run: |
           aws s3 cp ./social-media-app.zip s3://portfolio-projects-zipped-code/social-media-app.zip
 
-      - name: Wait for environment to be ready
-        run: |
-          aws elasticbeanstalk wait environment-ready \
-            --application-name $ELASTIC_BEANSTALK_NAME \
-            --environment-name $ELASTIC_BEANSTALK_ENV_NAME
-
       - name: Deploy to Elastic Beanstalk
         run: |
           aws elasticbeanstalk create-application-version \
