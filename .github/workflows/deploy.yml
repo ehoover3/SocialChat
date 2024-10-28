@@ -15,6 +15,7 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
 
     steps:
       - uses: actions/checkout@v4
@@ -43,6 +44,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build
+    timeout-minutes: 30
 
     steps:
       - uses: actions/download-artifact@v4.1.7
@@ -59,6 +61,12 @@ jobs:
       - name: Upload to S3
         run: |
           aws s3 cp ./social-media-app.zip s3://portfolio-projects-zipped-code/social-media-app.zip
+
+      - name: Wait for environment to be ready
+        run: |
+          aws elasticbeanstalk wait environment-ready \
+            --application-name $ELASTIC_BEANSTALK_NAME \
+            --environment-name $ELASTIC_BEANSTALK_ENV_NAME
 
       - name: Deploy to Elastic Beanstalk
         run: |
