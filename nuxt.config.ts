@@ -15,13 +15,13 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
-    jwtAccessSecret: process.env.JWT_ACCESS_TOKEN_SECRET,
-    jwtRefreshSecret: process.env.JWT_REFRESH_TOKEN_SECRET,
+    jwtAccessSecret: process.env.SOCIAL_MEDIA_JWT_ACCESS_TOKEN_SECRET,
+    jwtRefreshSecret: process.env.SOCIAL_MEDIA_JWT_REFRESH_TOKEN_SECRET,
 
     // Cloudinary
-    cloudinaryCloudName: process.env.CLOUDINARY_CLOUD_NAME,
-    cloudinaryApiKey: process.env.CLOUDINARY_API_KEY,
-    cloudinaryApiSecret: process.env.CLOUDINARY_API_SECRET,
+    cloudinaryCloudName: process.env.SOCIAL_MEDIA_CLOUDINARY_CLOUD_NAME,
+    cloudinaryApiKey: process.env.SOCIAL_MEDIA_CLOUDINARY_API_KEY,
+    cloudinaryApiSecret: process.env.SOCIAL_MEDIA_CLOUDINARY_API_SECRET,
   },
 
   compatibilityDate: "2024-10-16",
