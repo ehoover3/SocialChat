@@ -10,16 +10,6 @@ export default defineNuxtConfig({
   buildModules: ["@nuxtjs/tailwindcss"],
   modules: ["@nuxtjs/tailwindcss"],
   serverMiddleware: [],
-
-  nitro: {
-    output: {
-      publicDir: ".output/public", // Ensure this matches your Amplify build settings
-    },
-  },
-
-  // Enable server-side rendering
-  ssr: true,
-
   build: {
     transpile: ["@heroicons/vue"],
   },
