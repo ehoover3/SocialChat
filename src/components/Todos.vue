@@ -88,7 +88,7 @@ onMounted(() => {
           <span class="todo-date">{{ todo.createdAt }}</span>
           <span class="todo-email">{{ todo.email || "Unknown User" }}</span>
         </div>
-        <FontAwesomeIcon icon="trash" @click.stop="deleteTodo(todo.id)" class="delete-icon" />
+        <FontAwesomeIcon v-if="props.user?.signInDetails?.loginId === todo.email" icon="trash" @click.stop="deleteTodo(todo.id)" class="delete-icon" />
       </li>
     </ul>
   </main>
