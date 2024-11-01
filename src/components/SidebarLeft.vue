@@ -1,3 +1,4 @@
+<!-- src/components/SidebarLeft.vue -->
 <template>
   <aside class="sidebar-left">
     <ul>
@@ -5,11 +6,18 @@
       <li><a href="#">Profile</a></li>
       <li><a href="#">Settings</a></li>
     </ul>
+    <button @click="handleSignOut">Sign Out</button>
   </aside>
 </template>
 
 <script setup lang="ts">
-// You can import any necessary libraries or modules here if needed
+import { defineEmits } from "vue";
+
+const emit = defineEmits();
+
+const handleSignOut = () => {
+  emit("signOut");
+};
 </script>
 
 <style scoped>
@@ -35,5 +43,18 @@
 
 .sidebar-left a:hover {
   text-decoration: underline;
+}
+
+.sidebar-left button {
+  margin-top: 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.sidebar-left button:hover {
+  background-color: #0056b3;
 }
 </style>
