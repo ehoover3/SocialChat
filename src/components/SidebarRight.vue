@@ -7,23 +7,24 @@
       <p class="mt-2 text-sm font-bold text-blue-600 dark:text-blue-400 cursor-pointer hover:underline">See My Full Portfolio</p>
     </a>
 
-    <footer class="mt-6">
-      <ul class="flex flex-wrap flex-col justify-center mx-2 text-xs text-gray-600 dark:text-gray-400">
-        <li class="mx-2 cursor-pointer" @click="toggleMode">
-          <span class="hover:underline">{{ darkMode ? "Light Mode" : "Dark Mode" }}</span>
+    <section class="mt-6 p-4 bg-gray-100 dark:bg-gray-700 rounded-lg shadow-inner">
+      <ul class="flex flex-col space-y-2 items-center">
+        <li class="cursor-pointer" @click="toggleMode">
+          <span class="hover:underline transition-colors duration-200">{{ darkMode ? "Light Mode" : "Dark Mode" }}</span>
         </li>
-        <li class="mx-2">
-          <a href="/privacypolicy" class="hover:underline">Privacy Policy</a>
+
+        <li>
+          <a href="/privacypolicy" class="hover:underline transition-colors duration-200">Privacy</a>
         </li>
-        <li class="mx-2">
-          <a href="/cookiepolicy" class="hover:underline">Cookie Policy</a>
+        <li>
+          <a href="/cookiepolicy" class="hover:underline transition-colors duration-200">Cookie</a>
         </li>
-        <li class="mx-2">
-          <a href="/accessibilitypolicy" class="hover:underline">Accessibility</a>
+        <li>
+          <a href="/accessibilitypolicy" class="hover:underline transition-colors duration-200">Accessibility</a>
         </li>
-        <li class="mx-2">© 2024 Social App</li>
+        <li class="text-xs text-gray-500 dark:text-gray-400 text-center">© 2024 Social App</li>
       </ul>
-    </footer>
+    </section>
   </div>
 </template>
 
@@ -31,10 +32,12 @@
 import profileImage from "@/assets/images/profile.png";
 import { defineEmits, defineProps } from "vue";
 
-const props = defineProps();
+const props = defineProps({
+  darkMode: Boolean,
+});
 const emit = defineEmits();
 
 const toggleMode = () => {
-  emit("toggleDarkMode"); // Emit the toggle event
+  emit("toggleDarkMode");
 };
 </script>
