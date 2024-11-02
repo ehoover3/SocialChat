@@ -21,7 +21,7 @@ const darkMode = ref(true);
               <!-- Sidebar Left (for Desktop) -->
               <div class="hidden md:block col-span-2">
                 <div class="sticky top-0">
-                  <SidebarLeft :user="user" @signOut="signOut" />
+                  <SidebarLeft v-if="user" :user="user" @signOut="signOut" />
                 </div>
               </div>
 
