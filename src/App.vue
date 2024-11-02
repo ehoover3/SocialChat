@@ -14,7 +14,7 @@
             </main>
 
             <aside class="hidden md:block w-64 sticky top-0 h-screen shadow-lg">
-              <SidebarRight />
+              <SidebarRight :darkMode="darkMode" @toggleDarkMode="toggleDarkMode" />
             </aside>
 
             <section class="md:hidden fixed bottom-0 left-0 right-0 p-4 bg-gray-800 text-white text-center">
@@ -37,4 +37,8 @@ import Main from "./components/Main.vue";
 import "./assets/tailwind.css";
 
 const darkMode = ref(true);
+
+const toggleDarkMode = () => {
+  darkMode.value = !darkMode.value;
+};
 </script>

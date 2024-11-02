@@ -8,7 +8,10 @@
     </a>
 
     <footer class="mt-6">
-      <ul class="flex flex-wrap justify-center mx-2 text-xs text-gray-600 dark:text-gray-400">
+      <ul class="flex flex-wrap flex-col justify-center mx-2 text-xs text-gray-600 dark:text-gray-400">
+        <li class="mx-2 cursor-pointer" @click="toggleMode">
+          <span class="hover:underline">{{ darkMode ? "Light Mode" : "Dark Mode" }}</span>
+        </li>
         <li class="mx-2">
           <a href="/privacypolicy" class="hover:underline">Privacy Policy</a>
         </li>
@@ -26,4 +29,12 @@
 
 <script setup>
 import profileImage from "@/assets/images/profile.png";
+import { defineEmits, defineProps } from "vue";
+
+const props = defineProps();
+const emit = defineEmits();
+
+const toggleMode = () => {
+  emit("toggleDarkMode"); // Emit the toggle event
+};
 </script>
