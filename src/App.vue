@@ -15,7 +15,7 @@ const darkMode = ref(true);
   <div :class="{ dark: darkMode }">
     <div class="bg-white dark:bg-dim-900 min-h-screen">
       <Authenticator>
-        <template v-slot="{ user = {}, signOut }">
+        <template v-slot="{ user, signOut }">
           <div class="min-h-full">
             <div class="grid grid-cols-12 mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:gap-5">
               <!-- Sidebar Left (for Desktop) -->
