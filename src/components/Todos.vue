@@ -52,11 +52,13 @@ function formatDate(dateString: string): string {
 function listTodos() {
   client.models.Todo.observeQuery().subscribe({
     next: ({ items, isSynced }) => {
-      todos.value = items.map((todo) => ({
-        ...todo,
-        createdAt: todo.createdAt ? formatDate(todo.createdAt) : "Unknown Date",
-        email: todo.email || "No Email",
-      }));
+      todos.value = items
+        .map((todo) => ({
+          ...todo,
+          formattedCreatedAt: todo.createdAt ? formatDate(todo.createdAt) : "Unknown Date",
+          email: todo.email || "No Email",
+        }))
+        .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
     },
   });
 }
