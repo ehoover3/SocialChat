@@ -21,7 +21,7 @@ const darkMode = ref(true);
               <!-- Sidebar Left (for Desktop) -->
               <div class="hidden md:block col-span-2">
                 <div class="sticky top-0">
-                  <SidebarLeft v-if="user" :user="user" @signOut="signOut" />
+                  <SidebarLeft v-if="user" :user="user || {}" @signOut="signOut" />
                 </div>
               </div>
 
@@ -32,7 +32,7 @@ const darkMode = ref(true);
 
               <!-- Main Content -->
               <main class="col-span-12 md:col-span-8 xl:col-span-6 pb-20 md:pb-0">
-                <Main />
+                <Main v-if="user" :user="user || {}" />
               </main>
 
               <!-- Sidebar Right (for Desktop) -->

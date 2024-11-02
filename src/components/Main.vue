@@ -1,7 +1,7 @@
 <!-- src/components/Main.vue -->
 <template>
   <main class="main-content">
-    <h1>Hello {{ user?.signInDetails?.loginId.split("@")[0] }}'s todos</h1>
+    <h1>Hello {{ user?.username || user?.attributes?.email.split("@")[0] }}'s todos</h1>
     <Todos :user="user" />
   </main>
 </template>
