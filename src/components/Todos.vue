@@ -1,3 +1,22 @@
+<template>
+  <main class="max-w-md mx-auto p-6 bg-white dark:bg-gray-900 rounded-lg shadow-md">
+    <h1 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4">My Todos</h1>
+    <button @click="createTodo" class="w-full mb-6 py-2 px-4 bg-blue-600 text-white font-medium rounded hover:bg-blue-700 transition duration-150 ease-in-out">+ New</button>
+    <ul class="space-y-4">
+      <li v-for="todo in todos" :key="todo.id" class="flex justify-between items-center p-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+        <div class="flex flex-col">
+          <span class="font-medium text-gray-900 dark:text-white">{{ todo.content }}</span>
+          <div class="text-sm text-gray-500 dark:text-gray-400">
+            <span class="mr-2">{{ todo.createdAt }}</span>
+            <span>• {{ todo.email || "Unknown User" }}</span>
+          </div>
+        </div>
+        <FontAwesomeIcon v-if="props.user?.signInDetails?.loginId === todo.email" icon="trash" @click.stop="deleteTodo(todo.id)" class="text-red-500 cursor-pointer hover:text-red-600 transition duration-150 ease-in-out" />
+      </li>
+    </ul>
+  </main>
+</template>
+
 <script setup lang="ts">
 import "@/assets/main.css";
 import { onMounted, ref } from "vue";
@@ -52,7 +71,7 @@ function createTodo() {
 
   client.models.Todo.create({
     content: window.prompt("Todo content"),
-    email: userEmail, // Store the user's email instead of userId
+    email: userEmail,
   })
     .then(() => {
       listTodos();
@@ -76,62 +95,3 @@ onMounted(() => {
   listTodos();
 });
 </script>
-
-<template>
-  <main>
-    <h1>My todos</h1>
-    <button @click="createTodo">+ new</button>
-    <ul>
-      <li v-for="todo in todos" :key="todo.id" class="todo-item">
-        <div class="todo-content">
-          <span class="todo-text">{{ todo.content }}</span>
-          <span class="todo-date">{{ todo.createdAt }}</span>
-          <span class="todo-email">{{ todo.email || "Unknown User" }}</span>
-        </div>
-        <FontAwesomeIcon v-if="props.user?.signInDetails?.loginId === todo.email" icon="trash" @click.stop="deleteTodo(todo.id)" class="delete-icon" />
-      </li>
-    </ul>
-  </main>
-</template>
-
-<style>
-.todo-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 16px;
-  border-bottom: 1px solid #e0e0e0;
-  transition: background-color 0.2s ease-in-out;
-}
-
-.todo-item:hover {
-  background-color: #f9f9f9;
-}
-
-.todo-content {
-  display: flex;
-  flex-direction: column;
-}
-
-.todo-text {
-  font-weight: 500;
-  color: #333;
-}
-
-.todo-date {
-  font-size: 0.85rem;
-  color: #888;
-  margin-top: 4px;
-}
-
-.delete-icon {
-  cursor: pointer;
-  color: #e63946;
-  transition: transform 0.2s ease, color 0.2s ease;
-}
-
-.delete-icon:hover {
-  color: #d62828;
-  transform: scale(1.1);
-}
-</style>

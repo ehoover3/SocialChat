@@ -18,29 +18,25 @@ const darkMode = ref(true);
         <template v-slot="{ user, signOut }">
           <div class="min-h-full">
             <div class="grid grid-cols-12 mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:gap-5">
-              <!-- Sidebar Left (for Desktop) -->
-              <div class="hidden md:block col-span-2">
+              <aside class="hidden md:block col-span-2">
                 <div class="sticky top-0">
                   <SidebarLeft v-if="user" :user="user || {}" @signOut="signOut" />
                 </div>
-              </div>
+              </aside>
 
-              <!-- Mobile Bottom Bar -->
-              <div class="md:hidden fixed bottom-0 left-0 right-0 p-4 bg-gray-800 text-white text-center">
-                <button class="bg-blue-500 px-4 py-2 rounded-full">Tweet</button>
-              </div>
-
-              <!-- Main Content -->
               <main class="col-span-12 md:col-span-8 xl:col-span-6 pb-20 md:pb-0">
-                <Main v-if="user" :user="user || {}" />
+                <Main v-if="user" :user="user || {}" title="Home" />
               </main>
 
-              <!-- Sidebar Right (for Desktop) -->
-              <div class="hidden md:block xl:col-span-4 md:col-span-3">
+              <aside class="hidden md:block xl:col-span-4 md:col-span-3">
                 <div class="sticky top-0">
                   <SidebarRight />
                 </div>
-              </div>
+              </aside>
+
+              <section class="md:hidden fixed bottom-0 left-0 right-0 p-4 bg-gray-800 text-white text-center">
+                <button class="bg-blue-500 px-4 py-2 rounded-full">Post Message</button>
+              </section>
             </div>
           </div>
         </template>

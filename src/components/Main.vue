@@ -1,9 +1,18 @@
-<!-- src/components/Main.vue -->
+<!-- THIS ONE -->
 <template>
-  <main class="main-content">
-    <h1>Hello {{ user?.username || user?.attributes?.email.split("@")[0] }}'s todos</h1>
-    <Todos :user="user" />
-  </main>
+  <div class="border-x border-white-200 dark:border-gray-700">
+    <div class="sticky top-0 px-4 py-3 backdrop-blur-md bg-white/80 dark:bg-dim-900/80">
+      <h2 class="text-xl font-bold text-gray-800 dark:text-gray-100">{{ title }}</h2>
+    </div>
+
+    <div>
+      <div class="border-b border-white-200 dark:border-gray-700">
+        <!-- POST TODO HERE -->
+        <!-- <TweetForm :user="user" @on-success="handleFormSuccess" /> -->
+      </div>
+      <Todos :user="user" />
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -15,32 +24,11 @@ const props = defineProps({
     type: Object,
     required: true,
   },
+  title: {
+    type: String,
+    required: true,
+  },
 });
 
 const emit = defineEmits(["signOut"]);
 </script>
-
-<style scoped>
-.main-content {
-  flex-grow: 1;
-  padding: 20px;
-  background-color: #ffffff;
-  border-left: 1px solid #e0e0e0;
-  border-right: 1px solid #e0e0e0;
-}
-
-button {
-  margin-top: 20px;
-  padding: 8px 16px;
-  background-color: #007bff;
-  color: #ffffff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
-</style>
