@@ -11,7 +11,7 @@
             </aside>
 
             <main class="flex-grow flex flex-col p-4 md:p-6">
-              <Main v-if="user" :user="user || {}" :selectedTab="selectedTab" />
+              <Main v-if="user" :user="user" :selectedTab="selectedTab" />
             </main>
 
             <aside class="hidden md:block w-64 sticky top-0 h-screen shadow-lg">

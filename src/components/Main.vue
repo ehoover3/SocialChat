@@ -16,9 +16,10 @@ import Profile from "../views/Profile.vue";
 import PrivacyPolicy from "../views/PrivacyPolicy.vue";
 import CookiePolicy from "../views/CookiePolicy.vue";
 import TermsOfService from "../views/TermsOfService.vue";
+import type { User } from "../types/User";
 
 const props = defineProps<{
-  user: Record<string, any>;
+  user: User;
   selectedTab: string;
 }>();
 </script>
