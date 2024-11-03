@@ -17,8 +17,8 @@ import PrivacyPolicy from "../views/PrivacyPolicy.vue";
 import CookiePolicy from "../views/CookiePolicy.vue";
 import TermsOfService from "../views/TermsOfService.vue";
 
-const props = defineProps({
-  user: Object,
-  selectedTab: String,
-});
+const props = defineProps<{
+  user: Record<string, any>;
+  selectedTab: string;
+}>();
 </script>

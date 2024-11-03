@@ -25,5 +25,21 @@
 
 <script setup lang="ts">
 import { defineProps } from "vue";
-const props = defineProps<{ user: Record<string, any> }>();
+
+// Correctly type the props
+const props = defineProps<{
+  user: {
+    username: string;
+    email: string;
+    signInDetails: {
+      loginId: string;
+    };
+  };
+}>();
+
+// Define the saveProfile method
+function saveProfile() {
+  console.log("Profile saved:", props.user);
+  // Logic to save the profile goes here
+}
 </script>

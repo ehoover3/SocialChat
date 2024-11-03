@@ -1,4 +1,4 @@
-<!-- src/components/Todos.vue -->
+<!-- src/components/Home.vue -->
 
 <template>
   <main class="max-w-md mx-auto p-6 bg-white dark:bg-gray-900 rounded-lg shadow-md">
