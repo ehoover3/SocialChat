@@ -1,13 +1,22 @@
 <!-- src/components/Main.vue -->
 <template>
   <div class="flex-grow border-x border-gray-200 dark:border-gray-700">
-    <Messages :user="user" />
+    <Home v-if="selectedTab === 'home'" :user="user" />
+    <Profile v-else-if="selectedTab === 'profile'" :user="user" />
+    <PrivacyPolicy v-else-if="selectedTab === 'privacyPolicy'" :user="user" />
+    <CookiePolicy v-else-if="selectedTab === 'cookiePolicy'" :user="user" />
   </div>
 </template>
 
 <script setup lang="ts">
 import { defineProps } from "vue";
-import Messages from "./Messages.vue";
+import Home from "../views/Home.vue";
+import Profile from "../views/Profile.vue";
+import PrivacyPolicy from "../views/PrivacyPolicy.vue";
+import CookiePolicy from "../views/CookiePolicy.vue";
 
-const props = defineProps({ user: Object });
+const props = defineProps({
+  user: Object,
+  selectedTab: String,
+});
 </script>

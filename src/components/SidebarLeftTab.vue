@@ -6,7 +6,7 @@
       <slot name="icon"></slot>
     </div>
 
-    <div class="ml-4 text-xl xl:block">
+    <div class="ml-4 text-xl xl:block whitespace-nowrap">
       <slot name="name"></slot>
     </div>
   </div>

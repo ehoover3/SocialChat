@@ -1,25 +1,35 @@
 <!-- src/components/SidebarLeft.vue -->
 <template>
   <div class="flex flex-col items-center h-screen">
-    <div class="p-2 my-2 rounded-full hover:bg-blue-50 w-min dark:hover:bg-white/20">
-      <div class="w-8 h-8">
-        <LogoSocialMedia />
-      </div>
-    </div>
-
     <div class="mt-2 space-y-3">
-      <SidebarLeftTab title="Home">
+      <SidebarLeftTab title="Home" @click="selectTab('home')">
         <template v-slot:icon>
           <HomeIcon />
         </template>
         <template v-slot:name> Home </template>
       </SidebarLeftTab>
 
-      <SidebarLeftTab to="/profile" title="Profile">
+      <SidebarLeftTab title="Profile" @click="selectTab('profile')">
         <template v-slot:icon>
           <UserIcon />
         </template>
         <template v-slot:name> Profile </template>
+      </SidebarLeftTab>
+
+      <div class="w-full h-px bg-white my-3"></div>
+
+      <SidebarLeftTab title="Profile" @click="selectTab('privacyPolicy')">
+        <template v-slot:icon>
+          <IdentificationIcon />
+        </template>
+        <template v-slot:name> Privacy Policy </template>
+      </SidebarLeftTab>
+
+      <SidebarLeftTab title="Profile" @click="selectTab('cookiePolicy')">
+        <template v-slot:icon>
+          <FingerPrintIcon />
+        </template>
+        <template v-slot:name> Cookie Policy </template>
       </SidebarLeftTab>
 
       <div class="hidden xl:block" title="Log Out" @click="handleSignOut">
@@ -32,15 +42,20 @@
 </template>
 
 <script setup lang="ts">
-import { HomeIcon, UserIcon } from "@heroicons/vue/solid";
+import { HomeIcon, UserIcon, IdentificationIcon, FingerPrintIcon } from "@heroicons/vue/solid";
+import { defineProps, defineEmits } from "vue";
 import SidebarLeftTab from "./SidebarLeftTab.vue";
 import UIButton from "./UI/UIButton.vue";
-import { defineProps, defineEmits } from "vue";
 import LogoSocialMedia from "./LogoSocialMedia.vue";
+
 const props = defineProps<{ user: Record<string, any> }>();
 const emit = defineEmits();
 
 const handleSignOut = () => {
   emit("signOut");
+};
+
+const selectTab = (tab: string) => {
+  emit("tabSelected", tab);
 };
 </script>
