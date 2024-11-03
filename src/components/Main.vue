@@ -5,6 +5,7 @@
     <Profile v-else-if="selectedTab === 'profile'" :user="user" />
     <PrivacyPolicy v-else-if="selectedTab === 'privacyPolicy'" :user="user" />
     <CookiePolicy v-else-if="selectedTab === 'cookiePolicy'" :user="user" />
+    <TermsOfService v-else-if="selectedTab === 'termsOfService'" :user="user" />
   </div>
 </template>
 
@@ -14,6 +15,7 @@ import Home from "../views/Home.vue";
 import Profile from "../views/Profile.vue";
 import PrivacyPolicy from "../views/PrivacyPolicy.vue";
 import CookiePolicy from "../views/CookiePolicy.vue";
+import TermsOfService from "../views/TermsOfService.vue";
 
 const props = defineProps({
   user: Object,

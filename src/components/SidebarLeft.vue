@@ -32,6 +32,13 @@
         <template v-slot:name> Cookie Policy </template>
       </SidebarLeftTab>
 
+      <SidebarLeftTab title="Profile" @click="selectTab('termsOfService')">
+        <template v-slot:icon>
+          <ClipboardIcon />
+        </template>
+        <template v-slot:name> Terms of Service </template>
+      </SidebarLeftTab>
+
       <div class="hidden xl:block" title="Log Out" @click="handleSignOut">
         <UIButton liquid size="lg">
           <span class="font-bold"> Log Out </span>
@@ -42,7 +49,8 @@
 </template>
 
 <script setup lang="ts">
-import { HomeIcon, UserIcon, IdentificationIcon, FingerPrintIcon } from "@heroicons/vue/solid";
+import { HomeIcon, UserIcon, IdentificationIcon, FingerPrintIcon, ClipboardIcon } from "@heroicons/vue/solid";
+
 import { defineProps, defineEmits } from "vue";
 import SidebarLeftTab from "./SidebarLeftTab.vue";
 import UIButton from "./UI/UIButton.vue";
