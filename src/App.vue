@@ -35,9 +35,7 @@ import SidebarLeft from "./components/SidebarLeft.vue";
 import SidebarRight from "./components/SidebarRight.vue";
 import Main from "./components/Main.vue";
 import "./assets/tailwind.css";
-
 const darkMode = ref(true);
-
 const toggleDarkMode = () => {
   darkMode.value = !darkMode.value;
 };
