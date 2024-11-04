@@ -6,8 +6,8 @@
       <div class="flex-grow flex items-center justify-center">
         <Authenticator :form-fields="formFields">
           <template v-slot:header>
-            <div style="padding: var(--amplify-space-large); text-align: center">
-              <img class="amplify-image" alt="Amplify logo" src="https://docs.amplify.aws/assets/logo-dark.svg" />
+            <div style="text-align: center">
+              <img class="amplify-image" alt="Amplify logo" :src="SocialAppLogo" />
             </div>
           </template>
 
@@ -137,6 +137,7 @@ import SidebarRight from "./components/SidebarRight.vue";
 import Main from "./components/Main.vue";
 import "@aws-amplify/ui-vue/styles.css";
 import "./assets/tailwind.css";
+import SocialAppLogo from "./assets/SocialAppLogo.svg";
 
 const darkMode = ref(true);
 const toggleDarkMode = () => {
