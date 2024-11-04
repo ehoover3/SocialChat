@@ -13,7 +13,11 @@
             <span>• {{ todo.email || "Unknown User" }}</span>
           </div>
         </div>
-        <FontAwesomeIcon v-if="props.user?.signInDetails?.loginId === todo.email" icon="trash" @click.stop="deleteTodo(todo.id)" class="text-red-500 cursor-pointer hover:text-red-600 transition" />
+
+        <div class="flex space-x-3">
+          <FontAwesomeIcon icon="edit" @click="editTodo(todo)" class="text-blue-500 cursor-pointer hover:text-blue-600 transition ml-2" />
+          <FontAwesomeIcon v-if="props.user?.signInDetails?.loginId === todo.email" icon="trash" @click.stop="deleteTodo(todo.id)" class="text-red-500 cursor-pointer hover:text-red-600 transition ml-2" />
+        </div>
       </li>
     </ul>
   </main>
@@ -27,27 +31,26 @@ import { generateClient } from "aws-amplify/data";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
+import { faEdit } from "@fortawesome/free-solid-svg-icons";
 
 const props = defineProps<{
   user: any | null;
 }>();
 
-const client = generateClient<Schema>();
+library.add(faEdit);
 library.add(faTrash);
 
+const client = generateClient<Schema>();
 const todos = ref<Array<Schema["Todo"]["type"]>>([]);
 
 function formatDate(dateString: string): string {
   const date = new Date(dateString);
-
   const time = date.toLocaleTimeString("en-US", {
     hour: "numeric",
     minute: "numeric",
     hour12: true,
   });
-
   const formattedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear().toString().slice(-2)}`;
-
   return `${time} • ${formattedDate}`;
 }
 
@@ -83,6 +86,19 @@ function createTodo() {
     .catch((error) => {
       console.error("Error creating todo:", error);
     });
+}
+
+function editTodo(todo: any) {
+  const newContent = window.prompt("Edit your todo", todo.content);
+  if (newContent && newContent !== todo.content) {
+    client.models.Todo.update({ id: todo.id, content: newContent })
+      .then(() => {
+        listTodos();
+      })
+      .catch((error) => {
+        console.error("Error updating todo:", error);
+      });
+  }
 }
 
 function deleteTodo(id: string) {
