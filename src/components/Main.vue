@@ -11,11 +11,11 @@
 
 <script setup lang="ts">
 import { defineProps } from "vue";
-import Home from "../views/Home.vue";
-import Profile from "../views/Profile.vue";
-import PrivacyPolicy from "../views/PrivacyPolicy.vue";
-import CookiePolicy from "../views/CookiePolicy.vue";
-import TermsOfService from "../views/TermsOfService.vue";
+import Home from "../pages/Home.vue";
+import Profile from "../pages/Profile.vue";
+import PrivacyPolicy from "../pages/PrivacyPolicy.vue";
+import CookiePolicy from "../pages/CookiePolicy.vue";
+import TermsOfService from "../pages/TermsOfService.vue";
 import type { User } from "../types/User";
 
 const props = defineProps<{
