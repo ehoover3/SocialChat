@@ -87,21 +87,10 @@
             <div class="flex flex-col items-center">
               <div v-if="isAuthenticating" class="text-lg mb-4">Welcome! Please authenticate...</div>
               <div class="flex-grow flex">
-                <aside class="hidden md:block w-64 sticky top-0 h-screen shadow-lg">
-                  <SidebarLeft v-if="user" :user="user || {}" @signOut="signOut" @tabSelected="setSelectedTab" />
-                </aside>
-
-                <main class="flex-grow flex flex-col p-4 md:p-6">
-                  <Main v-if="user" :user="user" :selectedTab="selectedTab" />
-                </main>
-
-                <aside class="hidden md:block w-64 sticky top-0 h-screen shadow-lg">
-                  <SidebarRight :darkMode="darkMode" @toggleDarkMode="toggleDarkMode" />
-                </aside>
-
-                <section class="md:hidden fixed bottom-0 left-0 right-0 p-4 bg-gray-800 text-white text-center shadow-lg rounded-t-lg">
-                  <MobileFooter v-if="user" :selectTab="selectTab" />
-                </section>
+                <SidebarLeft v-if="user" :user="user || {}" @signOut="signOut" @tabSelected="setSelectedTab" />
+                <Main v-if="user" :user="user" :selectedTab="selectedTab" />
+                <SidebarRight :darkMode="darkMode" @toggleDarkMode="toggleDarkMode" />
+                <MobileFooter v-if="user" :selectTab="selectTab" />
               </div>
             </div>
           </template>

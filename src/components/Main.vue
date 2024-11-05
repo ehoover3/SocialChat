@@ -1,12 +1,14 @@
 <!-- src/components/Main.vue -->
 <template>
-  <div class="flex-grow border-x border-gray-200 dark:border-gray-700">
-    <Home v-if="selectedTab === 'home'" :user="user" />
-    <Profile v-else-if="selectedTab === 'profile'" :user="user" />
-    <PrivacyPolicy v-else-if="selectedTab === 'privacyPolicy'" :user="user" />
-    <CookiePolicy v-else-if="selectedTab === 'cookiePolicy'" :user="user" />
-    <TermsOfService v-else-if="selectedTab === 'termsOfService'" :user="user" />
-  </div>
+  <main class="flex-grow flex flex-col p-4 md:p-6">
+    <div class="flex-grow border-x border-gray-200 dark:border-gray-700">
+      <Home v-if="selectedTab === 'home'" :user="user" />
+      <Profile v-else-if="selectedTab === 'profile'" :user="user" />
+      <PrivacyPolicy v-else-if="selectedTab === 'privacyPolicy'" :user="user" />
+      <CookiePolicy v-else-if="selectedTab === 'cookiePolicy'" :user="user" />
+      <TermsOfService v-else-if="selectedTab === 'termsOfService'" :user="user" />
+    </div>
+  </main>
 </template>
 
 <script setup lang="ts">
