@@ -85,7 +85,6 @@
 
           <template v-slot="{ user, signOut, isAuthenticating }">
             <div class="flex flex-col items-center">
-              <!-- Display a welcome message when authenticating -->
               <div v-if="isAuthenticating" class="text-lg mb-4">Welcome! Please authenticate...</div>
               <div class="flex-grow flex">
                 <aside class="hidden md:block w-64 sticky top-0 h-screen shadow-lg">

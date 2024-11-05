@@ -54,7 +54,6 @@ import { HomeIcon, UserIcon, IdentificationIcon, FingerPrintIcon, ClipboardIcon 
 import { defineProps, defineEmits } from "vue";
 import SidebarLeftTab from "./SidebarLeftTab.vue";
 import UIButton from "./UI/UIButton.vue";
-import LogoSocialMedia from "./LogoSocialMedia.vue";
 
 const props = defineProps<{ user: Record<string, any> }>();
 const emit = defineEmits();
