@@ -39,7 +39,7 @@
         <template v-slot:name> Terms of Service </template>
       </SidebarLeftTab>
 
-      <div class="hidden xl:block" title="Log Out" @click="handleSignOut">
+      <div title="Log Out" @click="handleSignOut">
         <UIButton liquid size="lg">
           <span class="font-bold"> Log Out </span>
         </UIButton>
