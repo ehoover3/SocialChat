@@ -101,7 +101,6 @@
 </template>
 
 <script setup lang="ts">
-import Login from "./pages/Login.vue";
 import { ref } from "vue";
 import { Authenticator } from "@aws-amplify/ui-vue";
 import SidebarLeft from "./components/SidebarLeft.vue";
