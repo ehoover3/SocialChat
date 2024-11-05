@@ -10,7 +10,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from "vue";
 import Home from "../pages/Home.vue";
 import Profile from "../pages/Profile.vue";
 import PrivacyPolicy from "../pages/PrivacyPolicy.vue";

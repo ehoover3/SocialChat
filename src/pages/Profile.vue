@@ -10,7 +10,6 @@
 <script setup lang="ts">
 import { defineProps } from "vue";
 
-// Correctly type the props
 const props = defineProps<{
   user: {
     username: string;
@@ -21,9 +20,7 @@ const props = defineProps<{
   };
 }>();
 
-// Define the saveProfile method
 function saveProfile() {
   console.log("Profile saved:", props.user);
-  // Logic to save the profile goes here
 }
 </script>

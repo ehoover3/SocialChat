@@ -19,7 +19,6 @@
 
 <script setup>
 import profileImage from "@/assets/images/profile.png";
-import { defineEmits, defineProps } from "vue";
 
 const props = defineProps({
   darkMode: Boolean,

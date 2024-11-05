@@ -50,8 +50,6 @@
 
 <script setup lang="ts">
 import { HomeIcon, UserIcon, IdentificationIcon, FingerPrintIcon, ClipboardIcon } from "@heroicons/vue/solid";
-
-import { defineProps, defineEmits } from "vue";
 import SidebarLeftTab from "./SidebarLeftTab.vue";
 import UIButton from "./UI/UIButton.vue";
 
