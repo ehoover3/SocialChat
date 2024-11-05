@@ -4,7 +4,7 @@
   <div :class="{ dark: darkMode }">
     <div class="bg-white dark:bg-gray-900 min-h-screen flex flex-col">
       <div class="flex-grow flex items-center justify-center">
-        <Authenticator :form-fields="formFields">
+        <authenticator :form-fields="formFields">
           <template v-slot:header>
             <div style="text-align: center">
               <img class="amplify-image" alt="Amplify logo" :src="SocialAppLogo" />
@@ -94,13 +94,14 @@
               </div>
             </div>
           </template>
-        </Authenticator>
+        </authenticator>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import Login from "./pages/Login.vue";
 import { ref } from "vue";
 import { Authenticator } from "@aws-amplify/ui-vue";
 import SidebarLeft from "./components/SidebarLeft.vue";
@@ -116,11 +117,9 @@ const toggleDarkMode = () => {
 };
 const selectedTab = ref("home");
 const emit = defineEmits();
-
 const setSelectedTab = (tab: string) => {
   selectedTab.value = tab;
 };
-
 const selectTab = (tab: string) => {
   setSelectedTab(tab);
   emit("tabSelected", tab);
