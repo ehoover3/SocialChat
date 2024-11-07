@@ -1,87 +1,33 @@
 <!-- src/App.vue -->
-
 <template>
-  <div :class="{ dark: darkMode }">
-    <div class="bg-white dark:bg-gray-900 min-h-screen flex flex-col">
+  <div class="bg-cover">
+    <nav class="flex items-center space-x-4 p-4">
+      <img src="@/assets/images/logo.png" class="h-12 w-12 ml-5 mt-1" />
+      <div class="text-4xl">Nature Chat</div>
+    </nav>
+
+    <div class="min-h-screen flex flex-col">
       <div class="flex-grow flex items-center justify-center">
-        <div>HELLO</div>
         <authenticator :form-fields="formFields">
-          <!-- <template v-slot:header class="bg-pink-500">
-            <div style="text-align: center" class="text-red-500 text-6xl">Connect with friends.</div>
-            <div style="text-align: center" class="text-red-500 text-2xl">Join today.</div>
-          </template>
-
           <template v-slot:sign-in-header>
-            <div class="flex items-center flex-col justify-center mt-8 p-4 space-x-2 bg-red-500">
-              <h3 class="text-2xl font-semibold text-black-900 dark:text-black-100">Welcome to Social App</h3>
-              <div>Sign in to your account</div>
-            </div>
-          </template>
-
-          <template v-slot:sign-in-footer>
-            <div style="text-align: center" class="bg-red-500">
-              <button @click="toForgotPassword" class="amplify-button amplify-field-group__control" data-fullwidth="false" data-size="small" data-variation="link" type="button" style="font-weight: normal">Reset Password</button>
+            <div class="flex flex-col items-center justify-center mt-8 p-4 space-y-2">
+              <h3 class="text-5xl font-semibold text-gray-700">Explore Adventures,</h3>
+              <h3 class="text-5xl font-semibold text-gray-700">Share Your Story</h3>
             </div>
           </template>
 
           <template v-slot:sign-up-header>
-            <div class="flex items-center flex-col justify-center mt-8 p-4 space-x-2 bg-green-500">
-              <h3 class="text-2xl font-semibold text-black-900 dark:text-black-100">Welcome to Social App</h3>
-              <div>Create your account</div>
-            </div>
-          </template>
-
-          <template v-slot:sign-up-footer>
-            <div style="text-align: center" class="bg-green-500">
-              <button @click="toSignIn" class="amplify-button amplify-field-group__control" data-fullwidth="false" data-size="small" data-variation="link" type="button" style="font-weight: normal">Back to Sign In</button>
+            <div class="flex flex-col items-center justify-center mt-8 p-4 space-y-2">
+              <h3 class="text-5xl font-semibold text-gray-700">Explore Adventures,</h3>
+              <h3 class="text-5xl font-semibold text-gray-700">Share Your Story</h3>
             </div>
           </template>
 
           <template v-slot:footer>
-            <div style="padding: var(--amplify-space-large); text-align: center" class="bg-green-500">
-              <p class="amplify-text" style="color: var(--amplify-colors-neutral-80)">© 2024 Eric Hoover. All Rights Reserved.</p>
+            <div style="padding: var(--amplify-space-large); text-align: center">
+              <p class="amplify-text text-white">© 2024 Eric Hoover. All Rights Reserved.</p>
             </div>
           </template>
-
-          <template v-slot:confirm-sign-up-header>
-            <h3 class="amplify-heading" style="padding: var(--amplify-space-xl) 0 0 var(--amplify-space-xl)">Enter Information:</h3>
-          </template>
-
-          <template v-slot:confirm-sign-up-footer>
-            <div>Footer Information</div>
-          </template>
-
-          <template v-slot:setup-totp-header>
-            <h3 class="amplify-heading" style="padding: var(--amplify-space-xl) 0 0 var(--amplify-space-xl)">Enter Information:</h3>
-          </template>
-
-          <template v-slot:setup-totp-footer>
-            <div>Footer Information</div>
-          </template>
-
-          <template v-slot:confirm-sign-in-header>
-            <h3 class="amplify-heading" style="padding: var(--amplify-space-xl) 0 0 var(--amplify-space-xl)">Enter Information:</h3>
-          </template>
-
-          <template v-slot:confirm-sign-in-footer>
-            <div>Footer Information</div>
-          </template>
-
-          <template v-slot:forgot-password-header>
-            <h3 class="amplify-heading" style="padding: var(--amplify-space-xl) 0 0 var(--amplify-space-xl)">Enter Information:</h3>
-          </template>
-
-          <template v-slot:forgot-password-footer>
-            <div>Footer Information</div>
-          </template>
-
-          <template v-slot:confirm-reset-password-header>
-            <h3 class="amplify-heading" style="padding: var(--amplify-space-xl) 0 0 var(--amplify-space-xl)">Enter Information:</h3>
-          </template>
-
-          <template v-slot:confirm-reset-password-footer>
-            <div>Footer Information</div>
-          </template> -->
 
           <template v-slot="{ user, signOut, isAuthenticating }">
             <div class="flex flex-col items-center">
@@ -113,6 +59,7 @@ const darkMode = ref(true);
 const toggleDarkMode = () => {
   darkMode.value = !darkMode.value;
 };
+
 const selectedTab = ref("home");
 const emit = defineEmits();
 const setSelectedTab = (tab: string) => {
@@ -130,14 +77,14 @@ const formFields = {
     },
   },
   signUp: {
-    confirm_password: {
-      label: "Confirm Password:",
-      order: 1,
-    },
     password: {
       label: "Password:",
       placeholder: "Enter your Password:",
       isRequired: false,
+      order: 1,
+    },
+    confirm_password: {
+      label: "Confirm Password:",
       order: 2,
     },
   },
@@ -184,67 +131,18 @@ const formFields = {
 </script>
 
 <style scoped>
-/* .amplify-button.amplify-button--primary {
-  background-color: red !important;
+body {
+  background-color: #285e6c;
+  margin: 0;
+  min-height: 100vh;
 }
 
-.amplify-button.amplify-button--link {
-  color: orange !important;
-  background-color: red !important;
+.bg-cover {
+  background-color: #285e6c;
+  background-image: url("@/assets/images/background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
 }
-
-.amplify-tabs__item--active {
-  color: orange !important;
-  border-color: orange !important;
-  background-color: red !important;
-}
-
-.amplify-tabs__item {
-  color: orange !important;
-  background-color: red !important;
-}
-
-.amplify-field__show-password {
-  color: orange !important;
-  background-color: red !important;
-}
-
-.amplify-input {
-  border-color: red !important;
-  color: orange !important;
-  background-color: red !important;
-}
-
-.amplify-label {
-  color: orange !important;
-  background-color: red !important;
-}
-
-.amplify-authenticator__column {
-  background-color: red !important;
-}
-
-.amplify-input {
-  background-color: red !important;
-}
-
-[data-amplify-form] {
-  background-color: red !important;
-}
-
-[data-amplify-authenticator] {
-  background-color: pink !important;
-}
-
-#signIn-panel {
-  background-color: red !important;
-}
-
-[data-amplify-footer] {
-  background-color: red !important;
-}
-
-.amplify-tabs__panel {
-  background-color: red !important;
-} */
 </style>
