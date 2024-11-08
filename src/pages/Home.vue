@@ -74,9 +74,13 @@ function createTodo() {
     alert("You must be logged in to create a message.");
     return;
   }
+  const content = window.prompt("Message content");
+  if (content === null || content.trim() === "") {
+    return;
+  }
 
   client.models.Todo.create({
-    content: window.prompt("Message content"),
+    content: content,
     email: userEmail,
   })
     .then(() => {
