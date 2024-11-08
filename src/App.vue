@@ -1,3 +1,4 @@
+<!-- src/App.vue -->
 <template>
   <div :class="isUserLoggedIn ? 'bg-cover-logged-in' : 'bg-cover-logged-out'">
     <nav v-if="!isUserLoggedIn" class="flex items-center space-x-4 p-4 w-full">
@@ -29,7 +30,8 @@
           </template>
 
           <template v-slot="{ user, signOut, isAuthenticating }">
-            <div class="flex flex-col items-center">
+            <!-- <div class="flex flex-col items-center"> -->
+            <div class="min-h-screen flex flex-row">
               <div v-if="isAuthenticating" class="text-lg mb-4">Welcome! Please authenticate...</div>
               <div v-if="user" class="flex-grow flex">
                 <SidebarLeft
@@ -162,7 +164,7 @@ body {
   margin: auto;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   overflow: auto;
-  background: linear-gradient(315deg, rgba(13, 122, 117, 1) 3%, rgba(60, 132, 206, 1) 38%, rgba(39, 87, 98, 1) 68%, rgba(203, 205, 176, 1) 98%);
+  background: linear-gradient(315deg, rgba(13, 122, 117, 1) 3%, rgba(60, 132, 206, 1) 38%, rgb(35, 155, 173) 68%, rgba(38, 170, 224, 1) 98%);
   animation: gradient 15s ease infinite;
   background-size: 400% 400%;
   background-attachment: fixed;

@@ -1,6 +1,6 @@
 <!-- src/components/SidebarRight.vue -->
 <template>
-  <aside class="hidden md:block w-64 sticky top-0 h-screen shadow-lg">
+  <aside class="hidden md:block w-64 sticky top-6 h-screen shadow-lg">
     <div class="w-full p-4 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 rounded-lg shadow-md min-h-screen">
       <a href="https://erichoover.org" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center flex-col p-4 transition-transform transform hover:scale-105">
         <img class="w-24 h-24 rounded-full border-4 border-blue-500 shadow-md" :src="profileImage" alt="Profile" />
