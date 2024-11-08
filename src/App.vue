@@ -1,7 +1,6 @@
-<!-- src/App.vue -->
 <template>
-  <div class="bg-cover">
-    <nav class="flex items-center space-x-4 p-4">
+  <div :class="isUserLoggedIn ? 'bg-cover-logged-in' : 'bg-cover-logged-out'">
+    <nav v-if="!isUserLoggedIn" class="flex items-center space-x-4 p-4 w-full">
       <img src="@/assets/images/logo.png" class="h-12 w-12 ml-5 mt-1" />
       <div class="text-4xl font-semibold text-gray-700">Nature Chat</div>
     </nav>
@@ -32,12 +31,23 @@
           <template v-slot="{ user, signOut, isAuthenticating }">
             <div class="flex flex-col items-center">
               <div v-if="isAuthenticating" class="text-lg mb-4">Welcome! Please authenticate...</div>
-              <div class="flex-grow flex">
-                <SidebarLeft v-if="user" :user="user || {}" @signOut="signOut" @tabSelected="setSelectedTab" />
-                <Main v-if="user" :user="user" :selectedTab="selectedTab" />
-                <SidebarRight :darkMode="darkMode" @toggleDarkMode="toggleDarkMode" />
-                <MobileFooter v-if="user" :selectTab="selectTab" />
+              <div v-if="user" class="flex-grow flex">
+                <SidebarLeft
+                  :user="user"
+                  @signOut="
+                    () => {
+                      signOut();
+                      isUserLoggedIn = false;
+                    }
+                  "
+                  @tabSelected="setSelectedTab" />
+                <Main :user="user" :selectedTab="selectedTab" />
+                <MobileFooter :selectTab="selectTab" />
               </div>
+              <SidebarRight :darkMode="darkMode" @toggleDarkMode="toggleDarkMode" />
+            </div>
+            <div v-if="user && !isUserLoggedIn">
+              {{ (isUserLoggedIn = true) }}
             </div>
           </template>
         </authenticator>
@@ -55,11 +65,13 @@ import Main from "./components/Main.vue";
 import "@aws-amplify/ui-vue/styles.css";
 import "./assets/tailwind.css";
 import MobileFooter from "./components/MobileFooter.vue";
+
 const darkMode = ref(true);
 const toggleDarkMode = () => {
   darkMode.value = !darkMode.value;
 };
 
+const isUserLoggedIn = ref(false);
 const selectedTab = ref("home");
 const emit = defineEmits();
 const setSelectedTab = (tab: string) => {
@@ -137,12 +149,82 @@ body {
   min-height: 100vh;
 }
 
-.bg-cover {
+.bg-cover-logged-out {
   background-color: #285e6c;
   background-image: url("@/assets/images/background.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   min-height: 100vh;
+}
+
+.bg-cover-logged-in {
+  margin: auto;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow: auto;
+  background: linear-gradient(315deg, rgba(13, 122, 117, 1) 3%, rgba(60, 132, 206, 1) 38%, rgba(39, 87, 98, 1) 68%, rgba(203, 205, 176, 1) 98%);
+  animation: gradient 15s ease infinite;
+  background-size: 400% 400%;
+  background-attachment: fixed;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+.wave {
+  background: rgb(255 255 255 / 25%);
+  border-radius: 1000% 1000% 0 0;
+  position: fixed;
+  width: 200%;
+  height: 12em;
+  animation: wave 10s -3s linear infinite;
+  transform: translate3d(0, 0, 0);
+  opacity: 0.8;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.wave:nth-of-type(2) {
+  bottom: -1.25em;
+  animation: wave 18s linear reverse infinite;
+  opacity: 0.8;
+}
+
+.wave:nth-of-type(3) {
+  bottom: -2.5em;
+  animation: wave 20s -1s reverse infinite;
+  opacity: 0.9;
+}
+
+@keyframes wave {
+  2% {
+    transform: translateX(1);
+  }
+
+  25% {
+    transform: translateX(-25%);
+  }
+
+  50% {
+    transform: translateX(-50%);
+  }
+
+  75% {
+    transform: translateX(-25%);
+  }
+
+  100% {
+    transform: translateX(1);
+  }
 }
 </style>

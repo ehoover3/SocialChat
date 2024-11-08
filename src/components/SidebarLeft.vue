@@ -1,6 +1,6 @@
 <!-- src/components/SidebarLeft.vue -->
 <template>
-  <aside class="hidden md:block w-64 sticky top-0 h-screen shadow-lg">
+  <aside class="hidden md:block w-64 sticky top-6 h-screen shadow-lg bg-white rounded-lg">
     <div class="flex flex-col items-center h-screen">
       <div class="mt-2 space-y-3">
         <SidebarLeftTab title="Home" @click="selectTab('home')">
