@@ -71,24 +71,24 @@ function createTodo() {
   const userEmail = props.user?.signInDetails?.loginId;
   console.log("userEmail:", userEmail);
   if (!userEmail) {
-    alert("You must be logged in to create a todo.");
+    alert("You must be logged in to create a message.");
     return;
   }
 
   client.models.Todo.create({
-    content: window.prompt("Todo content"),
+    content: window.prompt("Message content"),
     email: userEmail,
   })
     .then(() => {
       listTodos();
     })
     .catch((error) => {
-      console.error("Error creating todo:", error);
+      console.error("Error creating message:", error);
     });
 }
 
 function editTodo(todo: any) {
-  const newContent = window.prompt("Edit your todo", todo.content);
+  const newContent = window.prompt("Edit your message", todo.content);
   if (newContent && newContent !== todo.content) {
     client.models.Todo.update({ id: todo.id, content: newContent })
       .then(() => {
