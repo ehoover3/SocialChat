@@ -3,7 +3,7 @@
   <div class="bg-cover">
     <nav class="flex items-center space-x-4 p-4">
       <img src="@/assets/images/logo.png" class="h-12 w-12 ml-5 mt-1" />
-      <div class="text-4xl">Nature Chat</div>
+      <div class="text-4xl font-semibold text-gray-700">Nature Chat</div>
     </nav>
 
     <div class="min-h-screen flex flex-col">
