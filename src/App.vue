@@ -31,7 +31,7 @@
 
           <template v-slot="{ user, signOut }">
             <div>
-              <nav class="flex items-center space-x-4 p-4 w-full" style="background-color: #1876f2">
+              <nav class="flex items-center space-x-4 p-4 w-full min-w-screen" style="background-color: #1876f2">
                 <img src="@/assets/png/logo.png" class="h-12 w-12 ml-5 mt-1" />
                 <div class="text-4xl font-semibold text-gray-50">Social Chat</div>
               </nav>
@@ -159,9 +159,5 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   min-height: 100vh;
-}
-
-.bg-cover-logged-in {
-  background-color: var(--background-color);
 }
 </style>
