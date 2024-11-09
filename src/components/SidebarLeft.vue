@@ -8,7 +8,7 @@
           <div class="w-6 h-6 text-dark">
             <HomeIcon />
           </div>
-          <div class="ml-4 text-xl xl:block whitespace-nowrap">Home</div>
+          <div class="ml-4 text-xl hidden sm:block whitespace-nowrap">Home</div>
         </div>
 
         <!-- Profile Tab -->
@@ -16,7 +16,7 @@
           <div class="w-6 h-6 text-dark">
             <UserIcon />
           </div>
-          <div class="ml-4 text-xl xl:block whitespace-nowrap">Profile</div>
+          <div class="ml-4 text-xl hidden sm:block whitespace-nowrap">Profile</div>
         </div>
 
         <!-- Privacy Policy Tab -->
@@ -24,7 +24,7 @@
           <div class="w-6 h-6 text-dark">
             <IdentificationIcon />
           </div>
-          <div class="ml-4 text-xl xl:block whitespace-nowrap">Privacy Policy</div>
+          <div class="ml-4 text-xl hidden sm:block whitespace-nowrap">Privacy Policy</div>
         </div>
 
         <!-- Cookie Policy Tab -->
@@ -32,7 +32,7 @@
           <div class="w-6 h-6 text-dark">
             <FingerPrintIcon />
           </div>
-          <div class="ml-4 text-xl xl:block whitespace-nowrap">Cookie Policy</div>
+          <div class="ml-4 text-xl hidden sm:block whitespace-nowrap">Cookie Policy</div>
         </div>
 
         <!-- Terms of Service Tab -->
@@ -40,14 +40,20 @@
           <div class="w-6 h-6 text-dark">
             <ClipboardIcon />
           </div>
-          <div class="ml-4 text-xl xl:block whitespace-nowrap">Terms of Service</div>
+          <div class="ml-4 text-xl hidden sm:block whitespace-nowrap">Terms of Service</div>
         </div>
 
         <!-- Log Out Button -->
         <div title="Log Out" @click="handleSignOut">
-          <Button liquid size="lg">
+          <!-- Large Screen Button -->
+          <button class="w-full py-3 px-4 text-white rounded-full font-sm bg-blue-600 hover:bg-blue-700 disabled:bg-blue-300 disabled:cursor-not-allowed hidden sm:block">
             <span class="font-bold"> Log Out </span>
-          </Button>
+          </button>
+
+          <!-- Mobile Screen Button -->
+          <button class="w-full py-3 px-4 text-white rounded-full font-sm bg-blue-600 hover:bg-blue-700 disabled:bg-blue-300 disabled:cursor-not-allowed block sm:hidden">
+            <span class="font-bold"> <LogoutIcon class="text-xl" /> </span>
+          </button>
         </div>
       </div>
     </div>
@@ -55,7 +61,7 @@
 </template>
 
 <script setup lang="ts">
-import { HomeIcon, UserIcon, IdentificationIcon, FingerPrintIcon, ClipboardIcon } from "@heroicons/vue/solid";
+import { HomeIcon, UserIcon, IdentificationIcon, FingerPrintIcon, ClipboardIcon, LogoutIcon } from "@heroicons/vue/solid";
 import Button from "./Button.vue";
 
 const props = defineProps<{ user: Record<string, any> }>();
