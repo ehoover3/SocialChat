@@ -2,7 +2,13 @@
 <template>
   <main class="bg-white rounded-lg m-2 mt-4 w-full">
     <h2 class="text-2xl font-semibold text-gray-800 mb-4">What is on your mind, {{ user?.signInDetails?.loginId.split("@")[0] }}?</h2>
-    <button @click="createPost" class="mb-6 py-2 px-4 bg-blue-600 text-white font-medium rounded hover:bg-blue-700 transition">+ New Post</button>
+
+    <!-- Conditional Input Field -->
+    <div class="mb-4 flex items-center space-x-2">
+      <input v-model="newPostContent" type="text" placeholder="Enter your message..." class="py-2 px-4 border border-gray-300 rounded-lg w-full" />
+      <button @click="createPost" class="py-2 px-4 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Submit</button>
+    </div>
+
     <ul class="space-y-4">
       <li v-for="todo in todos" :key="todo.id" class="flex justify-between items-center p-4 border border-gray-400 rounded-lg bg-gray-50">
         <div class="flex flex-col">
@@ -49,6 +55,9 @@ library.add(faTrash);
 const client = generateClient<Schema>();
 const todos = ref<FormattedTodo[]>([]);
 
+const showInput = ref(false); // Controls visibility of the input
+const newPostContent = ref(""); // The content for the new post
+
 function formatDate(dateString: string): string {
   const date = new Date(dateString);
   const options: Intl.DateTimeFormatOptions = {
@@ -78,21 +87,23 @@ function listPosts() {
 
 function createPost() {
   const userEmail = props.user?.signInDetails?.loginId;
-  console.log("userEmail:", userEmail);
   if (!userEmail) {
     alert("You must be logged in to create a message.");
     return;
   }
-  const content = window.prompt("Message content");
-  if (content === null || content.trim() === "") {
+
+  if (newPostContent.value.trim() === "") {
+    alert("Message content cannot be empty.");
     return;
   }
 
   client.models.Todo.create({
-    content: content,
+    content: newPostContent.value,
     email: userEmail,
   })
     .then(() => {
+      newPostContent.value = ""; // Clear input after posting
+      showInput.value = false; // Hide input field
       listPosts();
     })
     .catch((error) => {
