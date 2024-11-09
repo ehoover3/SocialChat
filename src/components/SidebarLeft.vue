@@ -1,37 +1,37 @@
 <!-- src/components/SidebarLeft.vue -->
 
 <template>
-  <aside class="rounded-lg m-2 mt-4 border border-gray-400 bg-gray-50 p-2">
-    <div class="flex flex-col items-center">
+  <aside>
+    <div class="flex flex-col items-center border border-gray-400 bg-gray-50 rounded-lg m-2 mt-4 p-2 pb-8">
       <div class="mt-2 space-y-3">
         <!-- Home Tab -->
         <button class="flex items-center p-3 text-black rounded-full w-min hover:bg-gray-200" title="Home" @click="selectTab('home')">
           <HomeIcon class="w-6 h-6 text-dark" />
-          <span class="ml-4 text-xl hidden sm:block whitespace-nowrap">Home</span>
+          <span class="ml-4 text-l hidden sm:block whitespace-nowrap">Home</span>
         </button>
 
         <!-- Profile Tab -->
         <button class="flex items-center p-3 text-black rounded-full w-min hover:bg-gray-200" title="Home" @click="selectTab('home')">
           <UserIcon class="w-6 h-6 text-dark" />
-          <span class="ml-4 text-xl hidden sm:block whitespace-nowrap">Profile</span>
+          <span class="ml-4 text-l hidden sm:block whitespace-nowrap">Profile</span>
         </button>
 
         <!-- Privacy Policy Tab -->
         <button class="flex items-center p-3 text-black rounded-full w-min hover:bg-gray-200" title="Home" @click="selectTab('home')">
           <IdentificationIcon class="w-6 h-6 text-dark" />
-          <span class="ml-4 text-xl hidden sm:block whitespace-nowrap">Privacy Policy</span>
+          <span class="ml-4 text-l hidden sm:block whitespace-nowrap">Privacy Policy</span>
         </button>
 
         <!-- Cookie Policy Tab -->
         <button class="flex items-center p-3 text-black rounded-full w-min hover:bg-gray-200" title="Home" @click="selectTab('home')">
           <FingerPrintIcon class="w-6 h-6 text-dark" />
-          <span class="ml-4 text-xl hidden sm:block whitespace-nowrap">Cookie Policy</span>
+          <span class="ml-4 text-l hidden sm:block whitespace-nowrap">Cookie Policy</span>
         </button>
 
         <!-- Terms of Service Tab -->
         <button class="flex items-center p-3 text-black rounded-full w-min hover:bg-gray-200" title="Home" @click="selectTab('home')">
           <ClipboardIcon class="w-6 h-6 text-dark" />
-          <span class="ml-4 text-xl hidden sm:block whitespace-nowrap">Terms of Service</span>
+          <span class="ml-4 text-l hidden sm:block whitespace-nowrap">Terms of Service</span>
         </button>
 
         <!-- Log Out Button -->
