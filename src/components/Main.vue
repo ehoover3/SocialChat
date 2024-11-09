@@ -5,7 +5,7 @@
 
     <div class="mb-4 flex items-center space-x-2 mr-4">
       <input v-model="newPostContent" type="text" placeholder="Enter your message..." @keyup.enter="createPost" class="py-2 px-4 border border-gray-300 rounded-lg w-full" />
-      <button @click="createPost" class="py-2 px-4 bg-blue-600 text-white rounded hover:bg-blue-700 transition w-20">Submit</button>
+      <button @click="createPost" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600 transition w-20">Submit</button>
     </div>
 
     <ul class="space-y-4">
@@ -26,8 +26,8 @@
         </div>
 
         <div v-if="todo.isEditing" class="flex flex-col space-y-2">
-          <button @click="saveEdit(todo)" class="py-1 px-2 bg-green-500 text-white rounded hover:bg-green-600 w-20">Save</button>
-          <button @click="cancelEdit(todo)" class="py-1 px-2 bg-gray-500 text-white rounded hover:bg-gray-600 w-20">Cancel</button>
+          <button @click="saveEdit(todo)" class="py-1.5 px-2 bg-blue-500 text-white rounded hover:bg-blue-600 w-20">Save</button>
+          <button @click="cancelEdit(todo)" class="py-1.5 px-2 bg-gray-400 text-white rounded hover:bg-gray-500 w-20">Cancel</button>
         </div>
       </li>
     </ul>
