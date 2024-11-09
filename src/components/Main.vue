@@ -103,7 +103,6 @@ function createPost() {
   }
 
   if (newPostContent.value.trim() === "") {
-    alert("Message content cannot be empty.");
     return;
   }
 
