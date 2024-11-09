@@ -1,7 +1,7 @@
 <!-- src/components/TermsOfService.vue -->
 
 <template>
-  <main class="max-w-lg mx-auto p-8 bg-white dark:bg-gray-900 rounded-lg shadow-lg text-gray-800 dark:text-white">
+  <main>
     <h2 class="text-3xl font-bold text-center mb-6">Terms of Service</h2>
     <div>
       <p class="mb-4">These terms of service govern your use of our website. By accessing or using our services, you agree to be bound by these terms.</p>

@@ -1,6 +1,6 @@
 <!-- src/components/CookiePolicy.vue -->
 <template>
-  <main class="max-w-lg mx-auto p-8 bg-white dark:bg-gray-900 rounded-lg shadow-lg text-gray-800 dark:text-white">
+  <main>
     <h2 class="text-3xl font-bold text-center mb-6">Cookie Policy</h2>
     <div>
       <p class="mb-4">This cookie policy explains how we use cookies and similar technologies to recognize you when you visit our website.</p>

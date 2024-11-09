@@ -1,7 +1,7 @@
 <!-- src/components/Main.vue -->
 <template>
-  <main class="flex-grow flex flex-col p-4 md:p-6">
-    <div class="flex-grow border-x border-gray-200 dark:border-gray-700">
+  <main class="bg-white rounded-lg m-2 mt-4 w-full">
+    <div class="w-full">
       <Home v-if="selectedTab === 'home'" :user="user" />
       <Profile v-else-if="selectedTab === 'profile'" :user="user" />
       <PrivacyPolicy v-else-if="selectedTab === 'privacyPolicy'" :user="user" />

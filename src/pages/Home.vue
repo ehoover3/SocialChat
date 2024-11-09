@@ -1,14 +1,14 @@
 <!-- src/components/Home.vue -->
 
 <template>
-  <main class="max-w-md mx-auto p-6 bg-white dark:bg-gray-900 rounded-lg shadow-md">
-    <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4">What is on your mind, {{ user?.signInDetails?.loginId.split("@")[0] }}?</h2>
-    <button @click="createPost" class="w-full mb-6 py-2 px-4 bg-blue-600 text-white font-medium rounded hover:bg-blue-700 transition">+ New Post</button>
+  <main>
+    <h2 class="text-2xl font-semibold text-gray-800 mb-4">What is on your mind, {{ user?.signInDetails?.loginId.split("@")[0] }}?</h2>
+    <button @click="createPost" class="mb-6 py-2 px-4 bg-blue-600 text-white font-medium rounded hover:bg-blue-700 transition">+ New Post</button>
     <ul class="space-y-4">
-      <li v-for="todo in todos" :key="todo.id" class="flex justify-between items-center p-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+      <li v-for="todo in todos" :key="todo.id" class="flex justify-between items-center p-4 border border-gray-400 rounded-lg bg-gray-50">
         <div class="flex flex-col">
-          <span class="font-medium text-gray-900 dark:text-white">{{ todo.content }}</span>
-          <div class="text-sm text-gray-500 dark:text-gray-400">
+          <span class="font-medium text-gray-900">{{ todo.content }}</span>
+          <div class="text-sm text-gray-500">
             <span class="mr-2">{{ todo.formattedCreatedAt }}</span>
             <span>• {{ todo.email || "Unknown User" }}</span>
           </div>

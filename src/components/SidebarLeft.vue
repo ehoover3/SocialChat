@@ -1,7 +1,7 @@
 <!-- src/components/SidebarLeft.vue -->
 <template>
-  <aside class="hidden md:block w-64 sticky top-6 h-screen shadow-lg bg-white rounded-lg">
-    <div class="flex flex-col items-center h-screen">
+  <aside class="rounded-lg m-2 mt-4 border border-gray-400 bg-gray-50 p-2">
+    <div class="flex flex-col items-center">
       <div class="mt-2 space-y-3">
         <SidebarLeftTab title="Home" @click="selectTab('home')">
           <template v-slot:icon>
@@ -16,8 +16,6 @@
           </template>
           <template v-slot:name> Profile </template>
         </SidebarLeftTab>
-
-        <div class="w-full h-px bg-white my-3"></div>
 
         <SidebarLeftTab title="Profile" @click="selectTab('privacyPolicy')">
           <template v-slot:icon>
@@ -41,9 +39,9 @@
         </SidebarLeftTab>
 
         <div title="Log Out" @click="handleSignOut">
-          <UIButton liquid size="lg">
+          <Button liquid size="lg">
             <span class="font-bold"> Log Out </span>
-          </UIButton>
+          </Button>
         </div>
       </div>
     </div>
@@ -53,7 +51,7 @@
 <script setup lang="ts">
 import { HomeIcon, UserIcon, IdentificationIcon, FingerPrintIcon, ClipboardIcon } from "@heroicons/vue/solid";
 import SidebarLeftTab from "./SidebarLeftTab.vue";
-import UIButton from "./UI/UIButton.vue";
+import Button from "./Button.vue";
 
 const props = defineProps<{ user: Record<string, any> }>();
 const emit = defineEmits();

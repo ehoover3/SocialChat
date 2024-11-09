@@ -1,6 +1,6 @@
 <!-- src/components/PrivacyPolicy.vue -->
 <template>
-  <main class="max-w-lg mx-auto p-8 bg-white dark:bg-gray-900 rounded-lg shadow-lg text-gray-800 dark:text-white">
+  <main>
     <h2 class="text-3xl font-bold text-center mb-6">Privacy Policy</h2>
     <div>
       <p class="mb-4">Your privacy is important to us. This privacy policy explains how we collect, use, and protect your information.</p>

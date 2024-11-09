@@ -29,11 +29,14 @@
             </div>
           </template>
 
-          <template v-slot="{ user, signOut, isAuthenticating }">
-            <!-- <div class="flex flex-col items-center"> -->
-            <div class="min-h-screen flex flex-row">
-              <div v-if="isAuthenticating" class="text-lg mb-4">Welcome! Please authenticate...</div>
-              <div v-if="user" class="flex-grow flex">
+          <template v-slot="{ user, signOut }">
+            <div>
+              <nav class="flex items-center space-x-4 p-4 w-full" style="background-color: #1876f2">
+                <img src="@/assets/images/logo.png" class="h-12 w-12 ml-5 mt-1" />
+                <div class="text-4xl font-semibold text-gray-700">Nature Chat</div>
+              </nav>
+
+              <div v-if="user" class="flex">
                 <SidebarLeft
                   :user="user"
                   @signOut="
@@ -44,9 +47,7 @@
                   "
                   @tabSelected="setSelectedTab" />
                 <Main :user="user" :selectedTab="selectedTab" />
-                <MobileFooter :selectTab="selectTab" />
               </div>
-              <SidebarRight :darkMode="darkMode" @toggleDarkMode="toggleDarkMode" />
             </div>
             <div v-if="user && !isUserLoggedIn">
               {{ (isUserLoggedIn = true) }}
@@ -62,16 +63,9 @@
 import { ref } from "vue";
 import { Authenticator } from "@aws-amplify/ui-vue";
 import SidebarLeft from "./components/SidebarLeft.vue";
-import SidebarRight from "./components/SidebarRight.vue";
 import Main from "./components/Main.vue";
 import "@aws-amplify/ui-vue/styles.css";
 import "./assets/tailwind.css";
-import MobileFooter from "./components/MobileFooter.vue";
-
-const darkMode = ref(true);
-const toggleDarkMode = () => {
-  darkMode.value = !darkMode.value;
-};
 
 const isUserLoggedIn = ref(false);
 const selectedTab = ref("home");
@@ -79,6 +73,7 @@ const emit = defineEmits();
 const setSelectedTab = (tab: string) => {
   selectedTab.value = tab;
 };
+
 const selectTab = (tab: string) => {
   setSelectedTab(tab);
   emit("tabSelected", tab);
@@ -145,10 +140,16 @@ const formFields = {
 </script>
 
 <style scoped>
+:root {
+  --primary-color: #1876f2;
+  --secondary-color: #495057;
+  --accent-color: #ffc107;
+  --text-color: #343a40;
+  --background-color: #f8f9fa;
+}
+
 body {
-  background-color: #285e6c;
-  margin: 0;
-  min-height: 100vh;
+  background-color: var(--background-color);
 }
 
 .bg-cover-logged-out {
@@ -161,72 +162,6 @@ body {
 }
 
 .bg-cover-logged-in {
-  margin: auto;
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-  overflow: auto;
-  background: linear-gradient(315deg, rgba(13, 122, 117, 1) 3%, rgba(60, 132, 206, 1) 38%, rgb(35, 155, 173) 68%, rgba(38, 170, 224, 1) 98%);
-  animation: gradient 15s ease infinite;
-  background-size: 400% 400%;
-  background-attachment: fixed;
-}
-
-@keyframes gradient {
-  0% {
-    background-position: 0% 0%;
-  }
-  50% {
-    background-position: 100% 100%;
-  }
-  100% {
-    background-position: 0% 0%;
-  }
-}
-
-.wave {
-  background: rgb(255 255 255 / 25%);
-  border-radius: 1000% 1000% 0 0;
-  position: fixed;
-  width: 200%;
-  height: 12em;
-  animation: wave 10s -3s linear infinite;
-  transform: translate3d(0, 0, 0);
-  opacity: 0.8;
-  bottom: 0;
-  left: 0;
-  z-index: -1;
-}
-
-.wave:nth-of-type(2) {
-  bottom: -1.25em;
-  animation: wave 18s linear reverse infinite;
-  opacity: 0.8;
-}
-
-.wave:nth-of-type(3) {
-  bottom: -2.5em;
-  animation: wave 20s -1s reverse infinite;
-  opacity: 0.9;
-}
-
-@keyframes wave {
-  2% {
-    transform: translateX(1);
-  }
-
-  25% {
-    transform: translateX(-25%);
-  }
-
-  50% {
-    transform: translateX(-50%);
-  }
-
-  75% {
-    transform: translateX(-25%);
-  }
-
-  100% {
-    transform: translateX(1);
-  }
+  background-color: var(--background-color);
 }
 </style>
