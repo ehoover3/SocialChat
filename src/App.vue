@@ -46,7 +46,7 @@
                     }
                   "
                   @tabSelected="setSelectedTab" />
-                <Main :user="user" :selectedTab="selectedTab" />
+                <Main :user="user" :selectedTab="selectedTab" class="w-full" />
               </div>
             </div>
             <div v-if="user && !isUserLoggedIn">

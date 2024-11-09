@@ -4,7 +4,7 @@
     <h2 class="text-2xl font-semibold text-gray-800 mb-4">What is on your mind, {{ user?.signInDetails?.loginId.split("@")[0] }}?</h2>
 
     <div class="mb-4 flex items-center space-x-2 mr-4">
-      <input v-model="newPostContent" type="text" placeholder="Enter your message..." @keyup.enter="createPost" class="py-2 px-4 border border-gray-300 rounded-lg" />
+      <input v-model="newPostContent" type="text" placeholder="Enter your message..." @keyup.enter="createPost" class="py-2 px-4 border border-gray-300 rounded-lg w-full" />
       <button @click="createPost" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600 transition w-20">Submit</button>
     </div>
 
