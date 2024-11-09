@@ -5,34 +5,44 @@
     <div class="flex flex-col items-center border border-gray-400 bg-gray-50 rounded-lg m-2 mt-4 p-2 pb-8">
       <div class="mt-2 space-y-3">
         <!-- Home Tab -->
-        <button class="flex items-center p-3 text-black rounded-full w-min hover:bg-gray-200" title="Home" @click="selectTab('home')">
-          <HomeIcon class="w-6 h-6 text-dark" />
-          <span class="ml-4 text-l hidden sm:block whitespace-nowrap">Home</span>
-        </button>
+        <router-link to="/">
+          <button class="flex items-center p-3 text-black rounded-full w-min hover:bg-gray-200" title="Home" @click="selectTab('home')">
+            <HomeIcon class="w-6 h-6 text-dark" />
+            <span class="ml-4 text-l hidden sm:block whitespace-nowrap">Home</span>
+          </button>
+        </router-link>
 
         <!-- Profile Tab -->
-        <button class="flex items-center p-3 text-black rounded-full w-min hover:bg-gray-200" title="Home" @click="selectTab('home')">
-          <UserIcon class="w-6 h-6 text-dark" />
-          <span class="ml-4 text-l hidden sm:block whitespace-nowrap">Profile</span>
-        </button>
+        <router-link to="/profile">
+          <button class="flex items-center p-3 text-black rounded-full w-min hover:bg-gray-200" title="Home" @click="selectTab('home')">
+            <UserIcon class="w-6 h-6 text-dark" />
+            <span class="ml-4 text-l hidden sm:block whitespace-nowrap">Profile</span>
+          </button>
+        </router-link>
 
         <!-- Privacy Policy Tab -->
-        <button class="flex items-center p-3 text-black rounded-full w-min hover:bg-gray-200" title="Home" @click="selectTab('home')">
-          <IdentificationIcon class="w-6 h-6 text-dark" />
-          <span class="ml-4 text-l hidden sm:block whitespace-nowrap">Privacy Policy</span>
-        </button>
+        <router-link to="/privacypolicy">
+          <button class="flex items-center p-3 text-black rounded-full w-min hover:bg-gray-200" title="Home" @click="selectTab('home')">
+            <IdentificationIcon class="w-6 h-6 text-dark" />
+            <span class="ml-4 text-l hidden sm:block whitespace-nowrap">Privacy Policy</span>
+          </button>
+        </router-link>
 
         <!-- Cookie Policy Tab -->
-        <button class="flex items-center p-3 text-black rounded-full w-min hover:bg-gray-200" title="Home" @click="selectTab('home')">
-          <FingerPrintIcon class="w-6 h-6 text-dark" />
-          <span class="ml-4 text-l hidden sm:block whitespace-nowrap">Cookie Policy</span>
-        </button>
+        <router-link to="/cookiepolicy">
+          <button class="flex items-center p-3 text-black rounded-full w-min hover:bg-gray-200" title="Home" @click="selectTab('home')">
+            <FingerPrintIcon class="w-6 h-6 text-dark" />
+            <span class="ml-4 text-l hidden sm:block whitespace-nowrap">Cookie Policy</span>
+          </button>
+        </router-link>
 
         <!-- Terms of Service Tab -->
-        <button class="flex items-center p-3 text-black rounded-full w-min hover:bg-gray-200" title="Home" @click="selectTab('home')">
-          <ClipboardIcon class="w-6 h-6 text-dark" />
-          <span class="ml-4 text-l hidden sm:block whitespace-nowrap">Terms of Service</span>
-        </button>
+        <router-link to="/termsofservice">
+          <button class="flex items-center p-3 text-black rounded-full w-min hover:bg-gray-200" title="Home" @click="selectTab('home')">
+            <ClipboardIcon class="w-6 h-6 text-dark" />
+            <span class="ml-4 text-l hidden sm:block whitespace-nowrap">Terms of Service</span>
+          </button>
+        </router-link>
 
         <!-- Log Out Button -->
         <div title="Log Out" @click="handleSignOut">

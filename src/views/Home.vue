@@ -1,4 +1,4 @@
-<!-- src/components/Main.vue -->
+<!-- src/views/Home.vue -->
 <template>
   <main class="bg-white rounded-lg m-2 mt-4">
     <h2 class="text-2xl font-semibold text-gray-800 mb-4">What is on your mind, {{ user?.signInDetails?.loginId.split("@")[0] }}?</h2>
@@ -42,6 +42,13 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
+
+// defineProps({
+//   user: {
+//     type: Object,
+//     required: true,
+//   },
+// });
 
 interface FormattedTodo {
   id: string;
