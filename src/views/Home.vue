@@ -16,7 +16,7 @@
 
           <div class="text-sm text-gray-500">
             <span class="mr-2">{{ todo.formattedCreatedAt }}</span>
-            <span>• {{ todo.email || "Unknown User" }}</span>
+            <span>• {{ todo.email?.split("@")[0] || "Unknown User" }}</span>
           </div>
         </div>
 
