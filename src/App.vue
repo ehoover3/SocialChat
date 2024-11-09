@@ -2,8 +2,8 @@
 <template>
   <div :class="isUserLoggedIn ? 'bg-cover-logged-in' : 'bg-cover-logged-out'">
     <nav v-if="!isUserLoggedIn" class="flex items-center space-x-4 p-4 w-full">
-      <img src="@/assets/images/logo.png" class="h-12 w-12 ml-5 mt-1" />
-      <div class="text-4xl font-semibold text-gray-700">Social Chat</div>
+      <img src="@/assets/png/logo.png" class="h-12 w-12 ml-5 mt-1 flex items-center" />
+      <div class="text-4xl font-semibold text-gray-700 flex">Social Chat</div>
     </nav>
 
     <div class="min-h-screen flex flex-col">
@@ -32,11 +32,11 @@
           <template v-slot="{ user, signOut }">
             <div>
               <nav class="flex items-center space-x-4 p-4 w-full" style="background-color: #1876f2">
-                <img src="@/assets/images/logo.png" class="h-12 w-12 ml-5 mt-1" />
+                <img src="@/assets/png/logo.png" class="h-12 w-12 ml-5 mt-1" />
                 <div class="text-4xl font-semibold text-gray-50">Social Chat</div>
               </nav>
 
-              <div v-if="user" class="flex">
+              <div v-if="user" class="flex min-h-screen">
                 <SidebarLeft
                   :user="user"
                   @signOut="
@@ -154,7 +154,7 @@ body {
 
 .bg-cover-logged-out {
   background-color: #285e6c;
-  background-image: url("@/assets/images/background.png");
+  background-image: url("@/assets/png/background.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
