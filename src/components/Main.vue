@@ -20,9 +20,9 @@
           </div>
         </div>
 
-        <div class="flex space-x-3">
-          <FontAwesomeIcon v-if="!todo.isEditing" icon="edit" @click="toggleEdit(todo)" class="text-blue-500 cursor-pointer hover:text-blue-600 transition ml-2" />
-          <FontAwesomeIcon v-if="!todo.isEditing && props.user?.signInDetails?.loginId === todo.email" icon="trash" @click.stop="deletePost(todo.id)" class="text-red-500 cursor-pointer hover:text-red-600 transition ml-2" />
+        <div class="flex space-x-3 mr-2.5">
+          <FontAwesomeIcon v-if="!todo.isEditing" icon="edit" @click="toggleEdit(todo)" class="text-blue-500 cursor-pointer hover:text-blue-600 text-2xl" />
+          <FontAwesomeIcon v-if="!todo.isEditing && props.user?.signInDetails?.loginId === todo.email" icon="trash" @click.stop="deletePost(todo.id)" class="text-red-500 cursor-pointer hover:text-red-600 text-2xl" />
         </div>
 
         <div v-if="todo.isEditing" class="flex flex-col space-y-2">
