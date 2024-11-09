@@ -98,7 +98,6 @@ function listPosts() {
 function createPost() {
   const userEmail = props.user?.signInDetails?.loginId;
   if (!userEmail) {
-    alert("You must be logged in to create a message.");
     return;
   }
 
