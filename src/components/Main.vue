@@ -5,7 +5,7 @@
 
     <!-- Conditional Input Field -->
     <div class="mb-4 flex items-center space-x-2">
-      <input v-model="newPostContent" type="text" placeholder="Enter your message..." class="py-2 px-4 border border-gray-300 rounded-lg w-full" />
+      <input v-model="newPostContent" type="text" placeholder="Enter your message..." @keyup.enter="createPost" class="py-2 px-4 border border-gray-300 rounded-lg w-full" />
       <button @click="createPost" class="py-2 px-4 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Submit</button>
     </div>
 
