@@ -3,41 +3,47 @@
   <aside class="rounded-lg m-2 mt-4 border border-gray-400 bg-gray-50 p-2">
     <div class="flex flex-col items-center">
       <div class="mt-2 space-y-3">
-        <SidebarLeftTab title="Home" @click="selectTab('home')">
-          <template v-slot:icon>
+        <!-- Home Tab -->
+        <div class="flex items-center p-3 text-black rounded-full w-min hover:bg-gray-200" title="Home" @click="selectTab('home')">
+          <div class="w-6 h-6 text-dark">
             <HomeIcon />
-          </template>
-          <template v-slot:name> Home </template>
-        </SidebarLeftTab>
+          </div>
+          <div class="ml-4 text-xl xl:block whitespace-nowrap">Home</div>
+        </div>
 
-        <SidebarLeftTab title="Profile" @click="selectTab('profile')">
-          <template v-slot:icon>
+        <!-- Profile Tab -->
+        <div class="flex items-center p-3 text-black rounded-full w-min hover:bg-gray-200" title="Profile" @click="selectTab('profile')">
+          <div class="w-6 h-6 text-dark">
             <UserIcon />
-          </template>
-          <template v-slot:name> Profile </template>
-        </SidebarLeftTab>
+          </div>
+          <div class="ml-4 text-xl xl:block whitespace-nowrap">Profile</div>
+        </div>
 
-        <SidebarLeftTab title="Profile" @click="selectTab('privacyPolicy')">
-          <template v-slot:icon>
+        <!-- Privacy Policy Tab -->
+        <div class="flex items-center p-3 text-black rounded-full w-min hover:bg-gray-200" title="Privacy Policy" @click="selectTab('privacyPolicy')">
+          <div class="w-6 h-6 text-dark">
             <IdentificationIcon />
-          </template>
-          <template v-slot:name> Privacy Policy </template>
-        </SidebarLeftTab>
+          </div>
+          <div class="ml-4 text-xl xl:block whitespace-nowrap">Privacy Policy</div>
+        </div>
 
-        <SidebarLeftTab title="Profile" @click="selectTab('cookiePolicy')">
-          <template v-slot:icon>
+        <!-- Cookie Policy Tab -->
+        <div class="flex items-center p-3 text-black rounded-full w-min hover:bg-gray-200" title="Cookie Policy" @click="selectTab('cookiePolicy')">
+          <div class="w-6 h-6 text-dark">
             <FingerPrintIcon />
-          </template>
-          <template v-slot:name> Cookie Policy </template>
-        </SidebarLeftTab>
+          </div>
+          <div class="ml-4 text-xl xl:block whitespace-nowrap">Cookie Policy</div>
+        </div>
 
-        <SidebarLeftTab title="Profile" @click="selectTab('termsOfService')">
-          <template v-slot:icon>
+        <!-- Terms of Service Tab -->
+        <div class="flex items-center p-3 text-black rounded-full w-min hover:bg-gray-200" title="Terms of Service" @click="selectTab('termsOfService')">
+          <div class="w-6 h-6 text-dark">
             <ClipboardIcon />
-          </template>
-          <template v-slot:name> Terms of Service </template>
-        </SidebarLeftTab>
+          </div>
+          <div class="ml-4 text-xl xl:block whitespace-nowrap">Terms of Service</div>
+        </div>
 
+        <!-- Log Out Button -->
         <div title="Log Out" @click="handleSignOut">
           <Button liquid size="lg">
             <span class="font-bold"> Log Out </span>
@@ -50,7 +56,6 @@
 
 <script setup lang="ts">
 import { HomeIcon, UserIcon, IdentificationIcon, FingerPrintIcon, ClipboardIcon } from "@heroicons/vue/solid";
-import SidebarLeftTab from "./SidebarLeftTab.vue";
 import Button from "./Button.vue";
 
 const props = defineProps<{ user: Record<string, any> }>();
