@@ -9,25 +9,25 @@
     </div>
 
     <ul class="space-y-4">
-      <li v-for="todo in todos" :key="todo.id" class="flex justify-between items-center p-4 border border-gray-400 rounded-lg bg-gray-50">
+      <li v-for="userMessage in userMessages" :key="userMessage.id" class="flex justify-between items-center p-4 border border-gray-400 rounded-lg bg-gray-50">
         <div class="flex flex-col w-full mr-4">
-          <span v-if="!todo.isEditing" class="font-medium text-gray-900">{{ todo.content }}</span>
-          <textarea v-else v-model="todo.editedContent" class="py-1 px-2 border border-gray-300 rounded-lg w-full resize-y"></textarea>
+          <span v-if="!userMessage.isEditing" class="font-medium text-gray-900">{{ userMessage.content }}</span>
+          <textarea v-else v-model="userMessage.editedContent" class="py-1 px-2 border border-gray-300 rounded-lg w-full resize-y"></textarea>
 
           <div class="text-sm text-gray-500">
-            <span class="mr-2">{{ todo.formattedCreatedAt }}</span>
-            <span>• {{ todo.email?.split("@")[0] || "Unknown User" }}</span>
+            <span class="mr-2">{{ userMessage.formattedCreatedAt }}</span>
+            <span>• {{ userMessage.email?.split("@")[0] || "Unknown User" }}</span>
           </div>
         </div>
 
         <div class="flex space-x-3 mr-2.5">
-          <FontAwesomeIcon v-if="!todo.isEditing" icon="edit" @click="toggleEdit(todo)" class="text-blue-500 cursor-pointer hover:text-blue-600 text-2xl" />
-          <FontAwesomeIcon v-if="!todo.isEditing && props.user?.signInDetails?.loginId === todo.email" icon="trash" @click.stop="deletePost(todo.id)" class="text-red-500 cursor-pointer hover:text-red-600 text-2xl" />
+          <FontAwesomeIcon v-if="!userMessage.isEditing" icon="edit" @click="toggleEdit(userMessage)" class="text-blue-500 cursor-pointer hover:text-blue-600 text-2xl" />
+          <FontAwesomeIcon v-if="!userMessage.isEditing && props.user?.signInDetails?.loginId === userMessage.email" icon="trash" @click.stop="deletePost(userMessage.id)" class="text-red-500 cursor-pointer hover:text-red-600 text-2xl" />
         </div>
 
-        <div v-if="todo.isEditing" class="flex flex-col space-y-2">
-          <button @click="saveEdit(todo)" class="py-1.5 px-2 bg-blue-500 text-white rounded hover:bg-blue-600 w-20">Save</button>
-          <button @click="cancelEdit(todo)" class="py-1.5 px-2 bg-gray-400 text-white rounded hover:bg-gray-500 w-20">Cancel</button>
+        <div v-if="userMessage.isEditing" class="flex flex-col space-y-2">
+          <button @click="saveEdit(userMessage)" class="py-1.5 px-2 bg-blue-500 text-white rounded hover:bg-blue-600 w-20">Save</button>
+          <button @click="cancelEdit(userMessage)" class="py-1.5 px-2 bg-gray-400 text-white rounded hover:bg-gray-500 w-20">Cancel</button>
         </div>
       </li>
     </ul>
@@ -43,14 +43,7 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 
-// defineProps({
-//   user: {
-//     type: Object,
-//     required: true,
-//   },
-// });
-
-interface FormattedTodo {
+interface FormattedUserMessage {
   id: string;
   content: string;
   editedContent: string;
@@ -68,7 +61,7 @@ library.add(faEdit);
 library.add(faTrash);
 
 const client = generateClient<Schema>();
-const todos = ref<FormattedTodo[]>([]);
+const userMessages = ref<FormattedUserMessage[]>([]);
 
 const showInput = ref(false);
 const newPostContent = ref("");
@@ -89,15 +82,15 @@ function formatDate(dateString: string): string {
 function listPosts() {
   client.models.Todo.observeQuery().subscribe({
     next: ({ items, isSynced }) => {
-      todos.value = items
-        .map((todo) => ({
-          ...todo,
-          formattedCreatedAt: todo.createdAt ? formatDate(todo.createdAt) : "Unknown Date",
-          email: todo.email || "No Email",
+      userMessages.value = items
+        .map((userMessage) => ({
+          ...userMessage,
+          formattedCreatedAt: userMessage.createdAt ? formatDate(userMessage.createdAt) : "Unknown Date",
+          email: userMessage.email || "No Email",
           isEditing: false,
-          editedContent: todo.content,
+          editedContent: userMessage.content,
         }))
-        .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()) as FormattedTodo[];
+        .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()) as FormattedUserMessage[];
     },
   });
 }
@@ -126,11 +119,11 @@ function createPost() {
     });
 }
 
-function toggleEdit(todo: FormattedTodo) {
+function toggleEdit(todo: FormattedUserMessage) {
   todo.isEditing = !todo.isEditing;
 }
 
-function saveEdit(todo: FormattedTodo) {
+function saveEdit(todo: FormattedUserMessage) {
   if (todo.editedContent && todo.editedContent !== todo.content) {
     client.models.Todo.update({ id: todo.id, content: todo.editedContent })
       .then(() => {
@@ -145,7 +138,7 @@ function saveEdit(todo: FormattedTodo) {
   }
 }
 
-function cancelEdit(todo: FormattedTodo) {
+function cancelEdit(todo: FormattedUserMessage) {
   todo.isEditing = false;
   todo.editedContent = todo.content;
 }
