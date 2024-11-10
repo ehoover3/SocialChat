@@ -63,7 +63,6 @@
 import { ref } from "vue";
 import { Authenticator } from "@aws-amplify/ui-vue";
 import SidebarLeft from "./components/SidebarLeft.vue";
-import Main from "./components/Main.vue";
 import "@aws-amplify/ui-vue/styles.css";
 import "./assets/tailwind.css";
 
