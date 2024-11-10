@@ -11,7 +11,9 @@
     <ul class="space-y-4">
       <li v-for="userMessage in userMessages" :key="userMessage.id" class="flex justify-between items-center p-4 border border-gray-400 rounded-lg bg-gray-50">
         <div class="flex flex-col w-full mr-4">
-          <span v-if="!userMessage.isEditing" class="font-medium text-gray-900">{{ userMessage.content }}</span>
+          <span v-if="!userMessage.isEditing && userMessage.content" class="font-medium text-gray-900">{{ userMessage.content }}</span>
+          <img v-if="!userMessage.isEditing && userMessage.url" :src="userMessage.url" alt="User Post Image" class="rounded-lg" />
+
           <textarea v-else v-model="userMessage.editedContent" class="py-1 px-2 border border-gray-300 rounded-lg w-full resize-y"></textarea>
 
           <div class="text-sm text-gray-500">
@@ -51,6 +53,7 @@ interface FormattedUserMessage {
   email: string;
   formattedCreatedAt: string;
   isEditing: boolean;
+  url: string;
 }
 
 const props = defineProps<{
@@ -65,6 +68,7 @@ const userMessages = ref<FormattedUserMessage[]>([]);
 
 const showInput = ref(false);
 const newPostContent = ref("");
+const newPostUrl = ref("");
 
 function formatDate(dateString: string): string {
   const date = new Date(dateString);
@@ -106,8 +110,9 @@ function createPost() {
   }
 
   client.models.Todo.create({
-    content: newPostContent.value,
     email: userEmail,
+    content: newPostContent.value,
+    url: newPostUrl.value,
   })
     .then(() => {
       newPostContent.value = "";
@@ -125,7 +130,7 @@ function toggleEdit(userMessage: FormattedUserMessage) {
 
 function saveEdit(userMessage: FormattedUserMessage) {
   if (userMessage.editedContent && userMessage.editedContent !== userMessage.content) {
-    client.models.Todo.update({ id: userMessage.id, content: userMessage.editedContent })
+    client.models.Todo.update({ id: userMessage.id, content: userMessage.editedContent, url: userMessage.url || "" })
       .then(() => {
         userMessage.isEditing = false;
         listPosts();
