@@ -119,28 +119,28 @@ function createPost() {
     });
 }
 
-function toggleEdit(todo: FormattedUserMessage) {
-  todo.isEditing = !todo.isEditing;
+function toggleEdit(userMessage: FormattedUserMessage) {
+  userMessage.isEditing = !userMessage.isEditing;
 }
 
-function saveEdit(todo: FormattedUserMessage) {
-  if (todo.editedContent && todo.editedContent !== todo.content) {
-    client.models.Todo.update({ id: todo.id, content: todo.editedContent })
+function saveEdit(userMessage: FormattedUserMessage) {
+  if (userMessage.editedContent && userMessage.editedContent !== userMessage.content) {
+    client.models.Todo.update({ id: userMessage.id, content: userMessage.editedContent })
       .then(() => {
-        todo.isEditing = false;
+        userMessage.isEditing = false;
         listPosts();
       })
       .catch((error) => {
-        console.error("Error updating todo:", error);
+        console.error("Error updating user message:", error);
       });
   } else {
-    todo.isEditing = false;
+    userMessage.isEditing = false;
   }
 }
 
-function cancelEdit(todo: FormattedUserMessage) {
-  todo.isEditing = false;
-  todo.editedContent = todo.content;
+function cancelEdit(userMessage: FormattedUserMessage) {
+  userMessage.isEditing = false;
+  userMessage.editedContent = userMessage.content;
 }
 
 function deletePost(id: string) {
@@ -149,7 +149,7 @@ function deletePost(id: string) {
       listPosts();
     })
     .catch((error) => {
-      console.error("Error deleting todo:", error);
+      console.error("Error deleting user message:", error);
     });
 }
 
