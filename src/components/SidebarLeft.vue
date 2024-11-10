@@ -62,7 +62,6 @@
 
 <script setup lang="ts">
 import { HomeIcon, UserIcon, IdentificationIcon, FingerPrintIcon, ClipboardIcon, LogoutIcon } from "@heroicons/vue/solid";
-import Button from "./Button.vue";
 
 const props = defineProps<{ user: Record<string, any> }>();
 const emit = defineEmits();
