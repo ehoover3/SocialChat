@@ -12,9 +12,11 @@
       <li v-for="userMessage in userMessages" :key="userMessage.id" class="flex justify-between items-center p-4 border border-gray-400 rounded-lg bg-gray-50">
         <div class="flex flex-col w-full mr-4">
           <span v-if="!userMessage.isEditing && userMessage.content" class="font-medium text-gray-900">{{ userMessage.content }}</span>
-          <img v-if="!userMessage.isEditing && userMessage.url" :src="userMessage.url" alt="User Post Image" class="rounded-lg" />
+
+          <img v-else-if="!userMessage.isEditing && userMessage.url !== 'No URL'" :src="userMessage.url" alt="User Post Image" class="rounded-lg" />
 
           <textarea v-else v-model="userMessage.editedContent" class="py-1 px-2 border border-gray-300 rounded-lg w-full resize-y"></textarea>
+          <!-- <div>{{ userMessage.url }}</div> -->
 
           <div class="text-sm text-gray-500">
             <span class="mr-2">{{ userMessage.formattedCreatedAt }}</span>
